@@ -1,0 +1,458 @@
+<!-- =====================================================================
+  맥부킷 포스트: 맥북 저장공간 부족 완벽 해결
+  작성일: 2026-04-13
+  슬러그: 맥북-저장공간-부족-해결-시스템데이터-icloud-최적화
+  제목: 맥북 저장공간 부족 완벽 해결 — 시스템 데이터·iCloud 최적화·SSD 3년 비용 비교
+  태그: 맥북저장공간부족, 맥북용량늘리기, 시스템데이터삭제, iCloud최적화, 맥북캐시삭제,
+        맥북스토리지정리, 맥북SSD용량, 맥북설정, 맥부킷, macOS시퀀서저장공간
+  이미지 CDN: https://cdn.jsdelivr.net/gh/every-git/tistory-assets@main/images/2026-04-13-macbook-storage-system-data-icloud/
+====================================================================== -->
+
+<!-- ===== 히어로 이미지 ===== -->
+<figure style="text-align: center; margin: 0 0 1.5rem 0;">
+  <img src="https://cdn.jsdelivr.net/gh/every-git/tistory-assets@main/images/2026-04-13-macbook-storage-system-data-icloud/macbook-storage-low-space-hero-3d.png" alt="맥북 저장공간 부족 경고와 클라우드·폴더를 상징하는 3D 일러스트" title="맥북 저장공간 부족 해결 가이드 히어로" style="max-width: 100%; height: auto; border-radius: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.14);" loading="eager" decoding="async" />
+  <figcaption style="font-size: 0.9rem; color: #666; margin-top: 10px;">시스템 데이터·iCloud·로컬 정리를 한 흐름으로 잡는 맥북 저장공간 가이드</figcaption>
+</figure>
+
+<!-- ===== 요약 박스 (Top Picks) ===== -->
+<p style="text-align: center;" data-ke-size="size18">
+<b>💡 맥북 저장공간 — 오늘 바로 되는 핵심 3가지</b><br /><br />
+✅ <b>시스템 설정 → 저장 공간</b> — 1분 안에 용량 분포 파악, 추천 항목 클릭 한 번으로 즉시 정리<br />
+✅ <b>iCloud 사진 최적화</b> — 원본은 클라우드, 썸네일만 로컬 저장 → 사진 라이브러리 수십 GB 즉시 확보<br />
+✅ <b>시스템 데이터 직접 삭제</b> — iOS 백업·Xcode 시뮬레이터·캐시 파일을 Finder로 안전하게 제거<br /><br />
+<a style="background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:15px 30px;border-radius:10px;text-decoration:none;font-weight:bold;display:inline-block;box-shadow:0 4px 15px rgba(0,0,0,0.2);" href="https://support.apple.com/ko-kr/guide/mac-help/mh35797/mac" target="_blank" rel="noopener noreferrer">👉 Apple 공식 저장 공간 관리 가이드</a>
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<!-- ===== 상단 광고 ===== -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2213720612531615" crossorigin="anonymous"></script>
+<!-- 본문중간_반응형 -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2213720612531615" data-ad-slot="1793363081" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<!-- ===== H2-1: 저장공간 진단 ===== -->
+
+<h2 style="text-align: center;" data-ke-size="size26"><b>🔍 맥북 저장공간, 지금 당장 정확히 진단하기</b></h2>
+
+<figure style="text-align: center; margin: 1rem auto 1.25rem;">
+  <img src="https://cdn.jsdelivr.net/gh/every-git/tistory-assets@main/images/2026-04-13-macbook-storage-system-data-icloud/macos-storage-categories-diagnosis-infographic.png" alt="앱·문서·사진·시스템 데이터 등 저장 공간 카테고리를 구분해 보여주는 인포그래픽" title="macOS 저장 공간 카테고리 진단" style="max-width: 100%; height: auto; border-radius: 14px; box-shadow: 0 10px 28px rgba(0,0,0,0.1);" loading="lazy" decoding="async" />
+  <figcaption style="font-size: 0.88rem; color: #666; margin-top: 8px;">색상 막대로 용량 구성을 익혀 두면 이후 정리 우선순위가 바로 잡힙니다</figcaption>
+</figure>
+
+<p style="text-align: center;" data-ke-size="size18">
+"저장 공간이 부족합니다"라는 경고창이 뜨고 나서야 부랴부랴 파일을 지우기 시작하면 이미 늦습니다.<br />
+먼저 어디서 얼마나 차지하는지 <b>정확히 파악</b>하는 것이 모든 정리의 시작입니다.<br /><br />
+
+<b>macOS Sequoia 저장 공간 확인 방법</b><br /><br />
+① 화면 왼쪽 상단 <b>Apple 메뉴(🍎)</b> 클릭<br />
+② <b>시스템 설정</b> → <b>일반</b> → <b>저장 공간</b><br />
+③ 색상으로 구분된 <b>저장 공간 바</b>를 확인합니다<br /><br />
+
+각 색상이 나타내는 카테고리는 다음과 같습니다.<br /><br />
+</p>
+
+<table style="border-collapse:collapse;width:80%;margin:0 auto;" border="1" data-ke-align="alignCenter">
+<tbody>
+<tr style="background:#f5f5f7;">
+<td style="padding:10px;text-align:center;"><b>색상/항목</b></td>
+<td style="padding:10px;text-align:center;"><b>포함 내용</b></td>
+<td style="padding:10px;text-align:center;"><b>정리 난이도</b></td>
+</tr>
+<tr>
+<td style="padding:10px;text-align:center;">앱</td>
+<td style="padding:10px;text-align:center;">설치된 애플리케이션 전체</td>
+<td style="padding:10px;text-align:center;">⭐ 쉬움</td>
+</tr>
+<tr>
+<td style="padding:10px;text-align:center;">문서</td>
+<td style="padding:10px;text-align:center;">문서, 스프레드시트, PDF 등</td>
+<td style="padding:10px;text-align:center;">⭐ 쉬움</td>
+</tr>
+<tr>
+<td style="padding:10px;text-align:center;">사진</td>
+<td style="padding:10px;text-align:center;">사진 앱 라이브러리 전체</td>
+<td style="padding:10px;text-align:center;">⭐⭐ 보통 (iCloud 연동 시 절약 큼)</td>
+</tr>
+<tr>
+<td style="padding:10px;text-align:center;">시스템 데이터</td>
+<td style="padding:10px;text-align:center;">iOS 백업, 캐시, 로그, 임시 파일</td>
+<td style="padding:10px;text-align:center;">⭐⭐⭐ 어려움 (별도 작업 필요)</td>
+</tr>
+<tr>
+<td style="padding:10px;text-align:center;">기타</td>
+<td style="padding:10px;text-align:center;">분류 불가 파일, 플러그인 등</td>
+<td style="padding:10px;text-align:center;">⭐⭐ 보통</td>
+</tr>
+</tbody>
+</table>
+
+<p style="text-align: center;" data-ke-size="size18"><br />
+가장 눈여겨볼 항목은 <b>시스템 데이터</b>입니다. 수십 GB에서 심한 경우 100GB를 넘어서기도 하는데,<br />
+macOS 저장 공간 화면에서는 정확히 무엇이 들어있는지 알 수 없어 많은 분들이 손을 못 대고 방치합니다.<br />
+아래 섹션에서 항목별로 정리하는 방법을 차례대로 안내합니다.
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<!-- ===== H2-2: 기본 스토리지 정리 ===== -->
+
+<h2 style="text-align: center;" data-ke-size="size26"><b>⚙️ 클릭 몇 번으로 끝내는 기본 스토리지 정리</b></h2>
+
+<figure style="text-align: center; margin: 1rem auto 1.25rem;">
+  <img src="https://cdn.jsdelivr.net/gh/every-git/tistory-assets@main/images/2026-04-13-macbook-storage-system-data-icloud/macbook-storage-quick-cleanup-broom-3d.png" alt="캐시·다운로드·불필요 파일을 정리하는 상징의 3D 빗자루 아이콘" title="기본 스토리지 정리" style="max-width: 100%; height: auto; border-radius: 14px; box-shadow: 0 10px 28px rgba(0,0,0,0.1);" loading="lazy" decoding="async" />
+  <figcaption style="font-size: 0.88rem; color: #666; margin-top: 8px;">시스템 추천 항목·캐시·다운로드 순으로 밀어 넣으면 부담 없이 용량이 돌아옵니다</figcaption>
+</figure>
+
+<p style="text-align: center;" data-ke-size="size18">
+macOS는 저장 공간 화면에서 <b>Apple이 직접 제안하는 최적화 항목</b>을 제공합니다.<br />
+서드파티 유료 앱 없이도 꽤 많은 공간을 확보할 수 있습니다.
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6" />
+
+<h3 style="text-align: center;" data-ke-size="size23"><b>1️⃣ iCloud Drive에 저장 — 데스크탑·문서 자동 동기화</b></h3>
+
+<p style="text-align: center;" data-ke-size="size18">
+<b>시스템 설정 → 일반 → 저장 공간</b> 화면에서 「iCloud Drive에 저장」을 활성화하면<br />
+데스크탑과 문서 폴더의 파일이 iCloud로 올라가고, 오래 사용하지 않은 파일은 로컬에서 자동 제거됩니다.<br /><br />
+⚠️ iCloud 요금제에 충분한 여유 용량이 있을 때만 활성화하세요.<br />
+현재 한국 기준 iCloud+ 요금: <b>50GB ₩1,100/월</b> · <b>200GB ₩3,300/월</b> · <b>2TB ₩11,000/월</b>
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6" />
+
+<h3 style="text-align: center;" data-ke-size="size23"><b>2️⃣ 다운로드 폴더 & 휴지통 비우기</b></h3>
+
+<p style="text-align: center;" data-ke-size="size18">
+Finder 사이드바에서 <b>다운로드</b> 폴더를 열고 날짜순 정렬 후 오래된 파일부터 삭제합니다.<br />
+이후 독(Dock)의 <b>휴지통</b>을 우클릭 → <b>휴지통 비우기</b>를 반드시 실행합니다.<br /><br />
+💡 Finder 상단 메뉴 <b>Finder → 환경설정(Settings) → 고급</b>에서<br />
+「30일이 지난 항목을 휴지통에서 자동으로 제거」를 켜두면 이후에는 신경 쓸 필요가 없습니다.
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6" />
+
+<h3 style="text-align: center;" data-ke-size="size23"><b>3️⃣ 앱 캐시 수동 삭제 (~/Library/Caches)</b></h3>
+
+<p style="text-align: center;" data-ke-size="size18">
+Finder를 열고 메뉴바에서 <b>이동 → 폴더로 이동</b>을 클릭하거나 <b>Cmd+Shift+G</b>를 누릅니다.<br />
+입력창에 <b>~/Library/Caches</b>를 입력하고 엔터를 누르면 앱별 캐시 폴더가 나타납니다.<br /><br />
+✅ 내부 폴더를 열어 크기가 큰 것 위주로 삭제하고 휴지통을 비웁니다.<br />
+✅ 삭제해도 안전합니다 — 앱이 다음 실행 시 자동으로 캐시를 재생성합니다.<br />
+✅ 카카오톡 캐시: <b>~/Library/Caches/com.kakao.KakaoTalkMac</b> 폴더 확인
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6" />
+
+<h3 style="text-align: center;" data-ke-size="size23"><b>4️⃣ 대용량 파일 & 사용하지 않는 앱 정리</b></h3>
+
+<p style="text-align: center;" data-ke-size="size18">
+<b>시스템 설정 → 일반 → 저장 공간</b>에서 「파일 검토」를 누르면<br />
+대용량 파일, 다운로드, 지원되지 않는 앱 등을 한눈에 볼 수 있습니다.<br /><br />
+앱 삭제 시에는 단순히 앱 아이콘을 휴지통에 버리는 것보다<br />
+<b>Launchpad에서 길게 누르기 → 삭제</b>하거나 앱 내 Uninstaller를 사용하는 것이 찌꺼기 파일 없이 깔끔합니다.
+</p>
+
+<!-- ===== 내부링크 카드 1 (H2-2 직후 — 저장공간 정리 심화글) ===== -->
+<div style="text-align:center;margin:24px 0;">
+<a href="https://doonablog.tistory.com/324"
+   style="display:inline-block;width:100%;max-width:520px;
+          border:1.5px solid #e0e0e0;border-radius:14px;background:#fff;
+          text-decoration:none;color:#1d1d1f;text-align:left;
+          box-shadow:0 2px 8px rgba(0,0,0,0.06);overflow:hidden;">
+  <img src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FboKhSj%2FbtsPSsZ6UGv%2FAAAAAAAAAAAAAAAAAAAAABGP3Ist4_zb7tgzsBugCvSi2mUArkET0SDyt2GbGTJl%2Fimg.png" alt="저장공간 부족 10분 해결 가이드"
+       style="width:100%;height:160px;object-fit:cover;display:block;" />
+  <div style="padding:14px 16px;">
+    <p style="margin:0 0 6px;font-size:15px;font-weight:700;color:#1d1d1f;line-height:1.4;">📌 저장공간 부족, 10분 만에 해결! (중복 파일·캐시·대용량 파일 완벽 정리)</p>
+    <p style="margin:0 0 8px;font-size:13px;color:#555;line-height:1.5;">맥북·스마트폰 공통으로 적용 가능한 저장공간 확보 가이드. 중복 파일, 앱 캐시, 숨긴 대용량 파일을 빠르게 찾아 삭제하는 방법을 정리했습니다.</p>
+    <p style="margin:0;font-size:12px;color:#bbb;">doonablog.tistory.com</p>
+  </div>
+</a>
+</div>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6" />
+
+<!-- ===== 중간 광고 ===== -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8522122113380115" crossorigin="anonymous"></script>
+<!-- 수동광고_반응형2 -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8522122113380115" data-ad-slot="1606182284" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<!-- ===== H2-3: iCloud 최적화 vs 외장 SSD 비교 ===== -->
+
+<h2 style="text-align: center;" data-ke-size="size26"><b>☁️ iCloud 사진 최적화 — 가장 빠르게 수십 GB 확보하는 법</b></h2>
+
+<figure style="text-align: center; margin: 1rem auto 1.25rem;">
+  <img src="https://cdn.jsdelivr.net/gh/every-git/tistory-assets@main/images/2026-04-13-macbook-storage-system-data-icloud/icloud-optimize-vs-external-ssd-split-3d.png" alt="iCloud 업로드와 외장 SSD 저장을 나란히 비교하는 3D 일러스트" title="iCloud vs 외장 SSD" style="max-width: 100%; height: auto; border-radius: 14px; box-shadow: 0 10px 28px rgba(0,0,0,0.1);" loading="lazy" decoding="async" />
+  <figcaption style="font-size: 0.88rem; color: #666; margin-top: 8px;">동기화·백업은 클라우드, 대용량 아카이브는 외장 드라이브 — 용도를 나누면 선택이 쉬워집니다</figcaption>
+</figure>
+
+<p style="text-align: center;" data-ke-size="size18">
+맥북 저장 공간의 상당 부분을 차지하는 주범 중 하나가 <b>사진 라이브러리</b>입니다.<br />
+iPhone으로 찍은 사진과 영상이 iCloud를 통해 맥북에도 고화질 원본으로 동기화되어 있다면<br />
+수십 GB, 많게는 수백 GB까지 잡아먹고 있을 수 있습니다.<br /><br />
+
+<b>iCloud 사진 최적화 설정 방법</b><br /><br />
+① <b>사진(Photos) 앱</b> 실행<br />
+② 메뉴바 <b>Photos → 설정(Settings)</b> 클릭<br />
+③ <b>iCloud</b> 탭 → <b>「Mac 저장 공간 최적화」</b> 선택<br /><br />
+
+이 설정을 켜면 원본 파일은 iCloud에만 보관되고, 맥북에는 <b>저화질 썸네일</b>만 저장됩니다.<br />
+사진을 열 때 인터넷에 연결되어 있으면 원본을 바로 내려받아 감상할 수 있습니다.<br /><br />
+
+⚠️ <b>주의:</b> iCloud 저장 공간이 부족하면 이 기능이 제대로 작동하지 않습니다.<br />
+현재 iCloud 사용량은 <b>시스템 설정 → Apple 계정 → iCloud</b>에서 확인하세요.
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6" />
+
+<h3 style="text-align: center;" data-ke-size="size23"><b>⚖️ iCloud 구독 vs 외장 SSD — 3년 비용 비교</b></h3>
+
+<p style="text-align: center;" data-ke-size="size18">
+"iCloud 요금 내느니 외장 SSD 사는 게 낫지 않나요?"<br />
+많이 받는 질문입니다. 상황에 따라 다르니 아래 표로 비교해 보세요.
+</p>
+
+<table style="border-collapse:collapse;width:90%;margin:0 auto;" border="1" data-ke-align="alignCenter">
+<tbody>
+<tr style="background:#f5f5f7;">
+<td style="padding:10px;text-align:center;"><b>구분</b></td>
+<td style="padding:10px;text-align:center;"><b>iCloud 50GB</b></td>
+<td style="padding:10px;text-align:center;"><b>iCloud 200GB</b></td>
+<td style="padding:10px;text-align:center;"><b>iCloud 2TB</b></td>
+<td style="padding:10px;text-align:center;"><b>외장 SSD 1TB</b></td>
+</tr>
+<tr>
+<td style="padding:10px;text-align:center;">월 비용</td>
+<td style="padding:10px;text-align:center;">₩1,100</td>
+<td style="padding:10px;text-align:center;">₩3,300</td>
+<td style="padding:10px;text-align:center;">₩11,000</td>
+<td style="padding:10px;text-align:center;"><b>없음</b> (일회성)</td>
+</tr>
+<tr>
+<td style="padding:10px;text-align:center;"><b>3년 총비용</b></td>
+<td style="padding:10px;text-align:center;">₩39,600</td>
+<td style="padding:10px;text-align:center;">₩118,800</td>
+<td style="padding:10px;text-align:center;">₩396,000</td>
+<td style="padding:10px;text-align:center;"><b>₩90,000~130,000</b></td>
+</tr>
+<tr>
+<td style="padding:10px;text-align:center;">용량</td>
+<td style="padding:10px;text-align:center;">50GB</td>
+<td style="padding:10px;text-align:center;">200GB</td>
+<td style="padding:10px;text-align:center;">2TB</td>
+<td style="padding:10px;text-align:center;">1TB</td>
+</tr>
+<tr>
+<td style="padding:10px;text-align:center;">기기 간 동기화</td>
+<td style="padding:10px;text-align:center;">✅</td>
+<td style="padding:10px;text-align:center;">✅</td>
+<td style="padding:10px;text-align:center;">✅</td>
+<td style="padding:10px;text-align:center;">❌</td>
+</tr>
+<tr>
+<td style="padding:10px;text-align:center;">인터넷 필요</td>
+<td style="padding:10px;text-align:center;">필요</td>
+<td style="padding:10px;text-align:center;">필요</td>
+<td style="padding:10px;text-align:center;">필요</td>
+<td style="padding:10px;text-align:center;"><b>불필요</b></td>
+</tr>
+<tr>
+<td style="padding:10px;text-align:center;">권장 대상</td>
+<td style="padding:10px;text-align:center;">사진 적은 라이트 유저</td>
+<td style="padding:10px;text-align:center;">사진·문서 다수 직장인</td>
+<td style="padding:10px;text-align:center;">영상 편집·크리에이터</td>
+<td style="padding:10px;text-align:center;">대용량 파일 이동 많은 사용자</td>
+</tr>
+</tbody>
+</table>
+
+<figure style="text-align: center; margin: 1rem auto 1.5rem;">
+  <img src="https://cdn.jsdelivr.net/gh/every-git/tistory-assets@main/images/2026-04-13-macbook-storage-system-data-icloud/icloud-vs-ssd-3year-cost-infographic.png" alt="iCloud 요금제와 외장 SSD 구매 비용을 막대 그래프로 비교하는 인포그래픽" title="iCloud vs 외장 SSD 비용 비교 시각화" style="max-width: 100%; height: auto; border-radius: 14px; box-shadow: 0 10px 28px rgba(0,0,0,0.1);" loading="lazy" decoding="async" />
+  <figcaption style="font-size: 0.88rem; color: #666; margin-top: 8px;">표의 숫자를 한눈에 비교할 때 — 월 구독 누적과 일회성 하드웨어 비용의 성격이 다릅니다</figcaption>
+</figure>
+
+<p style="text-align: center;" data-ke-size="size18"><br />
+💡 <b>결론:</b> 사진·문서 동기화가 주목적이라면 <b>iCloud 200GB</b>가 가성비 최강입니다.<br />
+외장 드라이브에 수시로 연결하기 번거롭고 아이폰과의 연동을 원한다면 iCloud가 맞고,<br />
+영상·원본 RAW 파일처럼 대용량 파일을 아카이빙하는 용도라면 <b>외장 SSD</b>가 경제적입니다.
+</p>
+
+<!-- ===== 내부링크 카드 2 (H2-3 직후 — 새 맥북 필수 설정 관련) ===== -->
+<div style="text-align:center;margin:24px 0;">
+<a href="https://doonablog.tistory.com/322"
+   style="display:inline-block;width:100%;max-width:520px;
+          border:1.5px solid #e0e0e0;border-radius:14px;background:#fff;
+          text-decoration:none;color:#1d1d1f;text-align:left;
+          box-shadow:0 2px 8px rgba(0,0,0,0.06);overflow:hidden;">
+  <img src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FcnefAo%2FbtsPS3SxVnr%2FAAAAAAAAAAAAAAAAAAAAAA1G96G-ZP0L4lJSOrFegF7i0v_lxB4F9V7rkNSdfoER%2Fimg.png" alt="새 맥북 필수 설정 13가지"
+       style="width:100%;height:160px;object-fit:cover;display:block;" />
+  <div style="padding:14px 16px;">
+    <p style="margin:0 0 6px;font-size:15px;font-weight:700;color:#1d1d1f;line-height:1.4;">📌 새 맥북 10분 세팅으로 2시간 절약하는 필수 설정 13가지 [2025년 완결판]</p>
+    <p style="margin:0 0 8px;font-size:13px;color:#555;line-height:1.5;">macOS Sequoia 기준으로 처음부터 올바르게 세팅하는 법. iCloud Drive, 저장 공간 최적화 포함 생산성 높이는 필수 설정 13가지를 한 번에 정리했습니다.</p>
+    <p style="margin:0;font-size:12px;color:#bbb;">doonablog.tistory.com</p>
+  </div>
+</a>
+</div>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<!-- ===== H2-4: 시스템 데이터 실전 정리 ===== -->
+
+<h2 style="text-align: center;" data-ke-size="size26"><b>🚀 정체불명 「시스템 데이터」 안전하게 줄이는 법</b></h2>
+
+<figure style="text-align: center; margin: 1rem auto 1.25rem;">
+  <img src="https://cdn.jsdelivr.net/gh/every-git/tistory-assets@main/images/2026-04-13-macbook-storage-system-data-icloud/macbook-system-data-hidden-files-3d.png" alt="숨겨진 백업·캐시·로그를 찾아내는 탐색을 상징하는 3D 돋보기 일러스트" title="시스템 데이터 정리" style="max-width: 100%; height: auto; border-radius: 14px; box-shadow: 0 10px 28px rgba(0,0,0,0.1);" loading="lazy" decoding="async" />
+  <figcaption style="font-size: 0.88rem; color: #666; margin-top: 8px;">iOS 백업·Xcode 시뮬레이터·로그는 Finder 경로만 알면 직접 정리할 수 있습니다</figcaption>
+</figure>
+
+<p style="text-align: center;" data-ke-size="size18">
+시스템 설정의 저장 공간 화면에서 <b>「시스템 데이터」가 50GB, 100GB를 넘어가는 경우</b>가 흔합니다.<br />
+이 항목은 macOS가 자동으로 관리하는 파일들인데, 직접 들어가서 정리할 수 있습니다.<br /><br />
+Finder에서 <b>Cmd+Shift+G</b>를 눌러 아래 경로들을 직접 확인하세요.
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6" />
+
+<h3 style="text-align: center;" data-ke-size="size23"><b>1️⃣ iOS·iPadOS 기기 백업 삭제</b></h3>
+
+<p style="text-align: center;" data-ke-size="size18">
+아이폰이나 아이패드를 맥북에 케이블로 연결해 백업한 적 있다면<br />
+<b>Finder 사이드바</b>에서 해당 기기를 선택 → 상단의 「일반」 탭 → <b>「백업 관리」</b>를 클릭합니다.<br />
+오래된 백업을 선택하고 삭제하면 됩니다.<br /><br />
+직접 경로를 찾고 싶다면: <b>~/Library/Application Support/MobileSync/Backup/</b>
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6" />
+
+<h3 style="text-align: center;" data-ke-size="size23"><b>2️⃣ Xcode 시뮬레이터 & 개발 캐시 (개발자용)</b></h3>
+
+<p style="text-align: center;" data-ke-size="size18">
+Xcode를 사용하는 개발자라면 시뮬레이터 데이터가 수십 GB씩 쌓입니다.<br />
+터미널에서 아래 명령어로 사용하지 않는 시뮬레이터를 한 번에 정리하세요.<br /><br />
+<code>xcrun simctl delete unavailable</code><br /><br />
+또는 Xcode 앱 → <b>Window → Devices and Simulators</b> → 불필요한 시뮬레이터 삭제
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6" />
+
+<h3 style="text-align: center;" data-ke-size="size23"><b>3️⃣ 시스템 로그 & 임시 파일</b></h3>
+
+<p style="text-align: center;" data-ke-size="size18">
+아래 경로의 파일들은 직접 삭제해도 시스템에 영향이 없습니다.<br /><br />
+✅ <b>~/Library/Caches</b> — 앱 캐시 (앱별 폴더 단위로 삭제)<br />
+✅ <b>/private/var/folders</b> — macOS 임시 파일 (재시작 시 자동 정리되므로 건드리지 않아도 됨)<br />
+✅ <b>~/Library/Logs</b> — 앱 로그 파일 (삭제 안전, 문제 진단 불필요하다면 정리 가능)<br /><br />
+💡 한 가지 팁: Finder에서 <b>Cmd+Shift+. (마침표)</b>를 누르면<br />
+숨김 파일과 폴더가 보여서 Library 내 숨겨진 대용량 폴더를 쉽게 찾을 수 있습니다.
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6" />
+
+<h3 style="text-align: center;" data-ke-size="size23"><b>4️⃣ CleanMyMac 없이도 충분한가요?</b></h3>
+
+<p style="text-align: center;" data-ke-size="size18">
+유료 앱인 CleanMyMac이 편리한 건 사실이지만, 위의 수동 방법으로도<br />
+대부분의 경우 <b>20~60GB</b>를 확보할 수 있습니다.<br /><br />
+단, 시스템 전체를 자동 스캔하고 안전 여부를 판단해 삭제해 주는 편의성을 원한다면<br />
+CleanMyMac X(Setapp 구독 포함) 사용도 합리적인 선택입니다.
+</p>
+
+<!-- ===== 내부링크 카드 3 (결론 직전 — 맥북 배터리 수명 설정) ===== -->
+<div style="text-align:center;margin:24px 0;">
+<a href="https://doonablog.tistory.com/336"
+   style="display:inline-block;width:100%;max-width:520px;
+          border:1.5px solid #e0e0e0;border-radius:14px;background:#fff;
+          text-decoration:none;color:#1d1d1f;text-align:left;
+          box-shadow:0 2px 8px rgba(0,0,0,0.06);overflow:hidden;">
+  <img src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FtcaRp%2FdJMcaf7bIqr%2FAAAAAAAAAAAAAAAAAAAAAMYJG1jiH3v2Gi-z0eEyzeyj0Jyc1-RjC3vJT2VuHLY-%2Fimg.jpg" alt="맥북 배터리 수명 늘리는 설정 5가지"
+       style="width:100%;height:160px;object-fit:cover;display:block;" />
+  <div style="padding:14px 16px;">
+    <p style="margin:0 0 6px;font-size:15px;font-weight:700;color:#1d1d1f;line-height:1.4;">📌 맥북 배터리 수명 늘리는 설정 5가지 — M1~M5 필수 세팅 완벽 가이드</p>
+    <p style="margin:0 0 8px;font-size:13px;color:#555;line-height:1.5;">저장공간을 정리했다면 배터리도 점검하세요. M1~M5 맥북 사용자라면 꼭 알아야 할 배터리 수명 최적화 설정 5가지를 정리했습니다.</p>
+    <p style="margin:0;font-size:12px;color:#bbb;">doonablog.tistory.com</p>
+  </div>
+</a>
+</div>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<!-- ===== FAQ ===== -->
+
+<h2 style="text-align: center;" data-ke-size="size26"><b>❓ 자주 묻는 질문</b></h2>
+
+<figure style="text-align: center; margin: 0.75rem auto 1.25rem;">
+  <img src="https://cdn.jsdelivr.net/gh/every-git/tistory-assets@main/images/2026-04-13-macbook-storage-system-data-icloud/macbook-storage-faq-speech-3d.png" alt="맥북 저장공간 FAQ를 상징하는 말풍선과 문서 3D 아이콘" title="자주 묻는 질문" style="max-width: 100%; height: auto; border-radius: 14px; box-shadow: 0 10px 28px rgba(0,0,0,0.1);" loading="lazy" decoding="async" />
+  <figcaption style="font-size: 0.88rem; color: #666; margin-top: 8px;">캐시 삭제 안전성·iCloud 최적화·재시작 후 용량 등 흔한 의문을 짧게 정리했습니다</figcaption>
+</figure>
+
+<h3 style="text-align: center;" data-ke-size="size23"><b>Q1. CleanMyMac 같은 앱 없이 무료로 50GB 이상 확보할 수 있나요?</b></h3>
+<p style="text-align: center;" data-ke-size="size18">
+충분히 가능합니다. iCloud 사진 최적화, iOS 기기 오래된 백업 삭제, 앱 캐시 정리, Xcode 시뮬레이터 삭제를 모두 실행하면 평균적으로 <b>30~80GB</b>를 확보할 수 있습니다. 특히 오랫동안 정리하지 않은 맥북이라면 100GB 이상 확보되는 경우도 있습니다.
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6" />
+
+<h3 style="text-align: center;" data-ke-size="size23"><b>Q2. ~/Library/Caches 폴더 전체를 삭제해도 안전한가요?</b></h3>
+<p style="text-align: center;" data-ke-size="size18">
+기본적으로 안전합니다. 캐시 파일은 앱이 빠르게 실행되도록 임시 저장하는 파일로, 삭제해도 앱이 다음 실행 시 자동으로 다시 생성합니다. 단, 폴더 전체를 한꺼번에 삭제하기보다는 <b>앱별 폴더 단위</b>로 선택적으로 삭제하는 것이 더 안전합니다. 현재 실행 중인 앱의 캐시는 삭제하지 마세요.
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6" />
+
+<h3 style="text-align: center;" data-ke-size="size23"><b>Q3. iCloud 사진 최적화를 켜면 기존 사진이 삭제되나요?</b></h3>
+<p style="text-align: center;" data-ke-size="size18">
+사진이 삭제되는 것이 아니라 <b>iCloud에 안전하게 보관</b>됩니다. 맥북에는 저화질 썸네일만 남고, 원본은 iCloud 서버에 있습니다. 인터넷 연결 상태에서 사진을 열면 원본이 다운로드됩니다. 따라서 iCloud 저장 공간에 여유가 충분한 상태에서 켜야 합니다.
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6" />
+
+<h3 style="text-align: center;" data-ke-size="size23"><b>Q4. 맥북 재시작 후 저장 공간이 더 늘어날 수 있나요?</b></h3>
+<p style="text-align: center;" data-ke-size="size18">
+네, 맞습니다. macOS는 재시작 시 <b>/private/var/folders</b>의 임시 파일과 swap 파일 일부를 자동 정리합니다. 오랫동안 재시작하지 않은 맥북이라면 재시작만으로 수 GB가 회복되는 경우도 있습니다. 저장 공간 정리 후 재시작을 한 번 해주세요.
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6" />
+
+<h3 style="text-align: center;" data-ke-size="size23"><b>Q5. 256GB 맥북, iCloud 없이 버틸 수 있나요?</b></h3>
+<p style="text-align: center;" data-ke-size="size18">
+영상 편집이나 대용량 파일 작업이 없다면, <b>외장 SSD + 꼼꼼한 로컬 정리</b>로 충분히 가능합니다. 단, 사진 라이브러리가 큰 경우에는 iCloud 사진 최적화 없이는 한계가 있습니다. 사진 수가 많다면 최소 iCloud 200GB(₩3,300/월) 구독을 권장합니다. 3년 비용이 ₩118,800으로 외장 SSD보다 비싸지만 기기 간 동기화와 편의성을 감안하면 충분히 합리적입니다.
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<!-- ===== 결론 ===== -->
+<h2 style="text-align: center;" data-ke-size="size26"><b>✅ 마무리 — 오늘 당장 해볼 저장공간 정리 순서</b></h2>
+
+<p style="text-align: center;" data-ke-size="size18">
+맥북 저장공간 부족 문제, 사실 유료 앱 없이도 충분히 해결됩니다.<br />
+오늘 바로 실천해볼 수 있는 순서를 정리합니다.<br /><br />
+
+<b>📋 지금 당장 실행 체크리스트</b><br /><br />
+☐ <b>시스템 설정 → 일반 → 저장 공간</b>에서 현재 용량 분포 확인<br />
+☐ <b>다운로드 폴더</b> 날짜순 정렬 후 6개월 이상 된 파일 삭제<br />
+☐ <b>휴지통 비우기</b> (Finder 오른쪽 클릭 또는 독에서 우클릭)<br />
+☐ <b>사진 앱 → 설정 → iCloud → Mac 저장 공간 최적화</b> 켜기<br />
+☐ <b>Finder → Cmd+Shift+G → ~/Library/Caches</b> 접속, 대용량 앱 캐시 삭제<br />
+☐ <b>Finder에서 기기 선택 → 백업 관리</b>로 오래된 iOS 백업 삭제<br />
+☐ <b>맥북 재시작</b>으로 임시 파일 자동 정리<br /><br />
+
+이 순서대로만 해도 대부분의 맥북에서 <b>30GB 이상</b>을 확보할 수 있습니다.<br />
+저장 공간 부족 경고창을 다시 보지 않으려면 매 분기마다 위 체크리스트를 한 번씩 실행해 주세요. 🧹
+</p>
+
+<div style="text-align:center;margin:20px 0;">
+<a style="background:#1d1d1f;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold;display:inline-block;margin:6px;" href="https://doonablog.tistory.com/category/Apple%20%26%20Mac">⚙️ Mac 세팅 허브</a>
+<a style="background:#1d1d1f;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold;display:inline-block;margin:6px;" href="https://doonablog.tistory.com/category/%EC%83%9D%EC%82%B0%EC%84%B1%20%26%20%EB%8F%84%EA%B5%AC">🚀 생산성 허브</a>
+</div>
+
+<!-- ===== 하단 광고 ===== -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8522122113380115" crossorigin="anonymous"></script>
+<!-- 수동광고_반응형3 -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8522122113380115" data-ad-slot="5154259644" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
