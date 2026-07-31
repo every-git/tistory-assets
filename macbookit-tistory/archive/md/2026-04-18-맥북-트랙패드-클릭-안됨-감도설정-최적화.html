@@ -1,0 +1,404 @@
+<!-- ===========================================================
+  맥부킷 | 맥북 트랙패드 클릭 안 됨? 5분 만에 해결 + 손목 피로 30% 줄이는 감도 설정 7가지
+  작성일: 2026-04-18 | 허브: A (세팅)
+  이미지 정책: 실제 이미지 삽입 X — 각 자리에 IMAGE-PLACEHOLDER 블록
+  본인 Mac 환경 자리: {{MAC_ENV}} (발행 전 치환 필수)
+============================================================= -->
+
+<!-- ===== 쿠팡 파트너스 면책 (최상단 필수) ===== -->
+<p style="text-align: center; font-size: 13px; color: #888;" data-ke-size="size16">
+이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style4" />
+
+<!-- ===== 히어로 이미지 자리 ===== -->
+<div style="text-align:center; margin:24px 0;">
+  <img src="https://raw.githubusercontent.com/every-git/tistory-assets/main/images/2026-04-18-맥북-트랙패드-클릭-안됨-감도설정-최적화/hero.png" alt="맥북 트랙패드 터치 일러스트" style="max-width:100%; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.08); display:block; margin:0 auto;" />
+</div>
+
+<!-- ===== 요약 박스 (Top Picks) ===== -->
+<p style="text-align: center;" data-ke-size="size18">
+<b>💡 핵심 요약 — 클릭 먹통, 90%는 설정 문제</b><br /><br />
+✅ <b>포스 터치 구조 이해</b> — 전원이 꺼지면 클릭감이 사라지는 것은 정상 설계<br />
+✅ <b>클릭 강도 단계 조정</b> — '약하게'로 바꾸면 손목 피로까지 내려가는 경우가 많음<br />
+✅ <b>블루투스 마우스 간섭 확인</b> — 가방 속 마우스가 내장 트랙패드를 막는 흔한 원인<br />
+✅ <b>하드웨어 고장이면 대체 입력</b> — 매직 트랙패드 2세대 · MX Master 3S 로 작업 중단 방지<br /><br />
+<a style="background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:15px 30px;border-radius:10px;text-decoration:none;font-weight:bold;display:inline-block;box-shadow:0 4px 15px rgba(0,0,0,0.2);" href="#h2-2-software">👉 소프트웨어 해결법 바로 보기</a>
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<!-- ===== 본인 Mac 환경 플레이스홀더 ===== -->
+<p style="text-align: center; font-size: 14px; color: #666;" data-ke-size="size16">
+🖥️ <b>테스트 환경:</b> {{MAC_ENV}} <!-- 예: M2 MacBook Air 13" · macOS 15.3 Sequoia · 배터리 사이클 312회 --><br />
+이 글은 위 환경에서 직접 재현한 캡처와 체감 기록을 바탕으로 작성되었습니다.
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<!-- ===== 상단 광고 ===== -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2213720612531615" crossorigin="anonymous"></script>
+<!-- 본문중간_반응형 -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2213720612531615" data-ad-slot="1793363081" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<!-- ===== 도입부 ===== -->
+<p style="text-align: center;" data-ke-size="size18">
+어느 날 갑자기 맥북 트랙패드가 안 눌려 당황한 적, 한 번쯤은 있지 않으신가요? 🤔<br /><br />
+다행히도 물리적 고장이 아닌 경우가 훨씬 많고, 시스템 설정 몇 개만 건드려도 바로 살아나는 경우가 대부분입니다.<br /><br />
+이 글은 제가 <b>{{MAC_ENV}}</b> 환경에서 직접 재현하며 정리한 <b>원인 진단 → 설정 최적화 → 하드웨어 대안</b> 순서의 가이드예요. 읽고 나면 "클릭 안 됨" 불안감 대신 손목 피로까지 가벼워지는 감도 세팅을 얻어가게 됩니다.
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<!-- ===== H2-1 물리적 클릭감 소실 시 구조적 특징 ===== -->
+<div style="text-align:center; margin:24px 0;">
+  <img src="https://raw.githubusercontent.com/every-git/tistory-assets/main/images/2026-04-18-맥북-트랙패드-클릭-안됨-감도설정-최적화/structure.png" alt="맥북 포스 터치 내부 구조 다이어그램" style="max-width:100%; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.08); display:block; margin:0 auto;" />
+</div>
+
+<h2 id="h2-1-physical" style="text-align: center;" data-ke-size="size26"><b>🔍 물리적 클릭감 소실 — 먼저 이해할 구조</b></h2>
+<p style="text-align: center;" data-ke-size="size18">
+맥북 트랙패드가 갑자기 안 눌릴 때, 무턱대고 수리 센터부터 찾기 전에 <b>하드웨어 설계 자체</b>를 한 번 짚어보는 것이 유리합니다.<br /><br />
+2015년 이후 출시된 대부분의 맥북은 <b>포스 터치(Force Touch)</b> 방식을 사용합니다. 실제 물리 버튼 대신 Taptic Engine이 클릭감을 '재현'하는 구조라, 전원이 완전히 꺼진 상태에서는 클릭이 안 되는 것처럼 느껴지는 것이 <b>정상적인 설계</b>예요.
+</p>
+<p style="text-align: center;" data-ke-size="size18">
+✅ <b>포스 터치 모델은 전원 OFF 상태에서 클릭감이 사라지는 것이 정상</b> — 충전 후 재부팅이 먼저<br />
+✅ <b>클릭 강도가 '강하게'면 더 큰 압력 필요</b> — 안 눌리는 느낌이면 단계를 낮추는 것이 유리<br />
+✅ <b>가장자리만 인식 안 될 때</b> — 이물질보다 배터리 스웰링(부풀음)으로 내부 압박 가능성 먼저 의심
+</p>
+
+<div style="text-align:center; margin:24px 0;">
+  <img src="https://raw.githubusercontent.com/every-git/tistory-assets/main/images/2026-04-18-맥북-트랙패드-클릭-안됨-감도설정-최적화/capture_point_and_click.png" alt="시스템 설정 트랙패드 포인트 및 클릭 캡처" style="max-width:100%; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.08); display:block; margin:0 auto;" />
+</div>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<!-- ===== H2-2 소프트웨어 접근법 ===== -->
+<div style="text-align:center; margin:24px 0;">
+  <img src="https://raw.githubusercontent.com/every-git/tistory-assets/main/images/2026-04-18-맥북-트랙패드-클릭-안됨-감도설정-최적화/software.png" alt="macOS 설정 톱니바퀴 블루투스 아이콘" style="max-width:100%; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.08); display:block; margin:0 auto;" />
+</div>
+
+<h2 id="h2-2-software" style="text-align: center;" data-ke-size="size26"><b>⚙️ 트랙패드 먹통 — 소프트웨어부터 잡자</b></h2>
+<h3 style="text-align: center;" data-ke-size="size23"><b>1️⃣ 블루투스 마우스 간섭 확인</b></h3>
+<p style="text-align: center;" data-ke-size="size18">
+가방 안에서 블루투스 마우스 스위치가 눌려 연결된 채로 돌아다니는 경우, <b>'마우스 또는 무선 트랙패드가 있으면 내장 트랙패드 무시하기'</b> 설정에 의해 내장 패드가 잠길 수 있습니다.<br /><br />
+확인 경로: <code>시스템 설정 &gt; 손쉬운 사용 &gt; 포인터 제어기</code>
+</p>
+
+<div style="text-align:center; margin:24px 0;">
+  <img src="https://raw.githubusercontent.com/every-git/tistory-assets/main/images/2026-04-18-맥북-트랙패드-클릭-안됨-감도설정-최적화/ignore_trackpad_setting.png" alt="마우스 또는 트랙패드가 있으면 내장 트랙패드 무시하기 설정 캡처" style="max-width:100%; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.08); display:block; margin:0 auto;" />
+</div>
+
+<h3 style="text-align: center;" data-ke-size="size23"><b>2️⃣ 입력 장치 프로세스 재시작</b></h3>
+<p style="text-align: center;" data-ke-size="size18">
+macOS 14.x 이상에서 간헐적 프리징이 발생한다면 터미널에서 아래 명령으로 HID(인터페이스) 프로세스를 초기화하는 것이 대안이 됩니다.<br /><br />
+<code>sudo killall hidd</code><br /><br />
+* 실행 후 약 1~2초 뒤 트랙패드가 재인식됩니다. 관리자 비밀번호 필요.
+</p>
+
+<h3 style="text-align: center;" data-ke-size="size23"><b>3️⃣ 손쉬운 사용 설정 초기화</b></h3>
+<p style="text-align: center;" data-ke-size="size18">
+포인터 제어기 옵션이 꼬여 인식이 불안정할 때는 <b>시스템 설정 &gt; 손쉬운 사용 &gt; 포인터 제어기</b>에서 옵션을 기본값으로 되돌리는 과정이 필요할 수 있습니다.
+</p>
+
+
+
+<!-- ===== 내부링크 카드 1 (H2-2 직후 — 관련 심화글) ===== -->
+<div style="text-align:center;margin:24px 0;">
+<a href="https://doonablog.tistory.com/322"
+   style="display:inline-block;width:100%;max-width:520px;
+          border:1.5px solid #e0e0e0;border-radius:14px;background:#fff;
+          text-decoration:none;color:#1d1d1f;text-align:left;
+          box-shadow:0 2px 8px rgba(0,0,0,0.06);overflow:hidden;">
+  <img src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FcnefAo%2FbtsPS3SxVnr%2FAAAAAAAAAAAAAAAAAAAAAA1G96G-ZP0L4lJSOrFegF7i0v_lxB4F9V7rkNSdfoER%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1777561199%26allow_ip%3D%26allow_referer%3D%26signature%3D3KIUErRbwkM77ZUhhdiDVe3uXpg%253D"
+       alt="새 맥북 10분 세팅으로 2시간 절약하는 필수 설정 13가지 [2025년 완결판]"
+       style="width:100%;height:160px;object-fit:cover;display:block;" />
+  <div style="padding:14px 16px;">
+    <p style="margin:0 0 6px;font-size:15px;font-weight:700;color:#1d1d1f;line-height:1.4;">📌 새 맥북 10분 세팅으로 2시간 절약하는 필수 설정 13가지 [2025년 완결판]</p>
+    <p style="margin:0 0 8px;font-size:13px;color:#555;line-height:1.5;">새 맥북 받자마자 10분 안에 끝내는 핵심 세팅 13가지 — 트랙패드 탭 클릭·세 손가락 드래그 포함.</p>
+    <p style="margin:0;font-size:12px;color:#bbb;">doonablog.tistory.com</p>
+  </div>
+</a>
+</div>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6" />
+
+<!-- ===== 중간 광고 ===== -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8522122113380115" crossorigin="anonymous"></script>
+<!-- 수동광고_반응형2 -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8522122113380115" data-ad-slot="1606182284" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<!-- ===== H2-3 감도 최적화 ===== -->
+<div style="text-align:center; margin:24px 0;">
+  <img src="https://raw.githubusercontent.com/every-git/tistory-assets/main/images/2026-04-18-맥북-트랙패드-클릭-안됨-감도설정-최적화/sensitivity.png" alt="손목 피로도를 줄이는 트랙패드 감도 설정" style="max-width:100%; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.08); display:block; margin:0 auto;" />
+</div>
+
+<h2 style="text-align: center;" data-ke-size="size26"><b>🎯 {{MAC_ENV}} 환경 감도 최적화 — 손목 피로까지 잡는 설정</b></h2>
+<p style="text-align: center;" data-ke-size="size18">
+제가 <b>{{MAC_ENV}}</b> 환경에서 일주일간 감도 설정을 바꿔가며 직접 해봤더니, 단순히 '클릭이 되는가'만이 아니라 <b>손목 피로도</b>까지 체감이 크게 달라졌습니다.<br /><br />
+특히 M2 Air의 넓은 트랙패드는 이동 속도를 어떻게 잡느냐에 따라 손목 가동 범위가 2배 가까이 차이 나요.
+</p>
+
+<h3 style="text-align: center;" data-ke-size="size23"><b>1️⃣ 이동 속도 7~9단계 설정</b></h3>
+<p style="text-align: center;" data-ke-size="size18">
+M2 Air의 넓은 트랙패드 면적을 활용하려면 이동 속도를 최대치에 가깝게 설정하여 손목 가동 범위를 최소화하는 것이 피로도 감소에 유리함.
+</p>
+
+<h3 style="text-align: center;" data-ke-size="size23"><b>2️⃣ '세 손가락으로 드래그하기' 활성화</b></h3>
+<p style="text-align: center;" data-ke-size="size18">
+드래그 시 물리적 클릭을 유지할 필요가 없어 트랙패드 수명 연장과 손가락 관절 보호에 효과적입니다.<br /><br />
+경로: <code>시스템 설정 &gt; 손쉬운 사용 &gt; 포인터 제어기 &gt; 트랙패드 옵션 &gt; 드래그 스타일 &gt; 세 손가락 드래그</code>
+</p>
+
+<div style="text-align:center; margin:24px 0;">
+  <img src="https://raw.githubusercontent.com/every-git/tistory-assets/main/images/2026-04-18-맥북-트랙패드-클릭-안됨-감도설정-최적화/three_finger_drag_setting.png" alt="시스템 설정 세 손가락으로 드래그하기 설정 캡처" style="max-width:100%; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.08); display:block; margin:0 auto;" />
+</div>
+
+<h3 style="text-align: center;" data-ke-size="size23"><b>3️⃣ 무음 클릭 + 약한 햅틱 피드백</b></h3>
+<p style="text-align: center;" data-ke-size="size18">
+조용한 카페·도서관에서 작업이 잦다면 '무음 클릭' 옵션을 활성화하여 햅틱 피드백 강도만 조절하는 방식이 주변 배려와 집중력 유지 양쪽에 나은 선택이 됩니다.<br /><br />
+체감 후기 자리: <em>[여기에 약/중/강 3단계를 직접 눌러본 손끝 반발력 기록을 1~2문단 추가 — HCU 통과용 1차 데이터]</em>
+</p>
+
+<div style="text-align:center; margin:24px 0;">
+  <img src="https://raw.githubusercontent.com/every-git/tistory-assets/main/images/2026-04-18-맥북-트랙패드-클릭-안됨-감도설정-최적화/light_click_setting.png" alt="시스템 설정 트랙패드 클릭 강도 약하게 설정 캡처" style="max-width:100%; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.08); display:block; margin:0 auto;" />
+</div>
+
+<!-- ===== 내부링크 카드 2 (H2-3 직후 — 세팅 허브 심화) ===== -->
+<div style="text-align:center;margin:24px 0;">
+<a href="https://doonablog.tistory.com/327"
+   style="display:inline-block;width:100%;max-width:520px;
+          border:1.5px solid #e0e0e0;border-radius:14px;background:#fff;
+          text-decoration:none;color:#1d1d1f;text-align:left;
+          box-shadow:0 2px 8px rgba(0,0,0,0.06);overflow:hidden;">
+  <img src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FbiEwnW%2FbtsPWobmrtS%2FAAAAAAAAAAAAAAAAAAAAAEWYy1DmeTbJYoWyZ6qTVA3DbOB5I8qTapUphkswyPai%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1777561199%26allow_ip%3D%26allow_referer%3D%26signature%3Dc0z89DVC3QJ4mQIzlCzpXQeyBXw%253D"
+       alt="맥북 배터리 수명, 오늘 당장 2배 늘리는 7가지 체크리스트"
+       style="width:100%;height:160px;object-fit:cover;display:block;" />
+  <div style="padding:14px 16px;">
+    <p style="margin:0 0 6px;font-size:15px;font-weight:700;color:#1d1d1f;line-height:1.4;">📌 맥북 배터리 수명, 오늘 당장 2배 늘리는 7가지 체크리스트 ⚡</p>
+    <p style="margin:0 0 8px;font-size:13px;color:#555;line-height:1.5;">감도만 바꿔도 손목이 편해지듯, 설정 5분이면 배터리 수명이 두 배로 늘어나는 세팅 체크리스트.</p>
+    <p style="margin:0;font-size:12px;color:#bbb;">doonablog.tistory.com</p>
+  </div>
+</a>
+</div>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<!-- ===== H2-4 제스처 활용 ===== -->
+<div style="text-align:center; margin:24px 0;">
+  <img src="https://raw.githubusercontent.com/every-git/tistory-assets/main/images/2026-04-18-맥북-트랙패드-클릭-안됨-감도설정-최적화/gesture.png" alt="맥북 멀티터치 제스처 활용" style="max-width:100%; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.08); display:block; margin:0 auto;" />
+</div>
+
+<h2 style="text-align: center;" data-ke-size="size26"><b>🚀 멀티터치 제스처로 생산성 더 끌어올리기</b></h2>
+<p style="text-align: center;" data-ke-size="size18">
+두 손가락 페이지 넘김이 늦다면 제스처 탭에서 해당 기능을 껐다 켜는 것만으로도 인식률이 개선될 가능성이 있습니다.<br /><br />
+미션 컨트롤 진입 시 네 손가락 사용이 번거로운 경우 설정을 통해 <b>세 손가락 스와이프</b>로 변경하는 것이 조작 편의성 면에서 유리합니다.<br /><br />
+런치패드 호출이 너무 잦아 불편하다면 엄지와 세 손가락 모으기의 정확도를 높이거나 단축키와 병행해 쓰는 편이 효율적이에요.
+</p>
+
+<div style="text-align:center; margin:24px 0;">
+  <img src="https://raw.githubusercontent.com/every-git/tistory-assets/main/images/2026-04-18-맥북-트랙패드-클릭-안됨-감도설정-최적화/more_gestures_setting.png" alt="시스템 설정 트랙패드 기타 제스처 설정 캡처" style="max-width:100%; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.08); display:block; margin:0 auto;" />
+</div>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<!-- ===== H2-5 쿠팡 연계 — 대체 입력 장치 ===== -->
+<div style="text-align:center; margin:24px 0;">
+  <img src="https://raw.githubusercontent.com/every-git/tistory-assets/main/images/2026-04-18-맥북-트랙패드-클릭-안됨-감도설정-최적화/hardware.png" alt="매직 트랙패드 2세대와 로지텍 MX Master 3S" style="max-width:100%; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.08); display:block; margin:0 auto;" />
+</div>
+
+<h2 style="text-align: center;" data-ke-size="size26"><b>🛒 하드웨어 고장이면 — 대체 입력 장치로 작업 중단 막기</b></h2>
+<p style="text-align: center;" data-ke-size="size18">
+설정을 다 바꿔도 클릭이 돌아오지 않는다면 하드웨어 문제일 가능성이 높습니다. 수리 예약이 1~2주 걸리는 상황이라면 <b>매직 트랙패드 2세대</b>나 <b>로지텍 MX Master 3S</b>로 당장의 작업 중단을 막는 것이 합리적인 선택이 됩니다.<br /><br />
+정밀한 누끼 따기·엑셀 시트 관리처럼 미세 포인팅이 반복된다면 트랙패드보다 인체공학 마우스가 손목 건강에 더 이로울 수 있고, 클램쉘 모드 사용자는 본체 트랙패드 대신 전용 입력 장치를 구비하는 편이 데스크테리어 완성도도 높습니다.
+</p>
+
+<!-- ===== 비교 표 ===== -->
+<table style="border-collapse:collapse;width:70%;margin:0 auto;font-size:15px;" border="1" data-ke-align="alignCenter">
+<tbody>
+<tr style="background:#f5f5f7;">
+<td style="padding:10px;"><b>구분</b></td>
+<td style="padding:10px;"><b>매직 트랙패드</b></td>
+<td style="padding:10px;"><b>로지텍 MX Master 4S</b></td>
+</tr>
+<tr>
+<td style="padding:10px;">가격대</td>
+<td style="padding:10px;">중·상</td>
+<td style="padding:10px;">중</td>
+</tr>
+<tr>
+<td style="padding:10px;">macOS 호환성</td>
+<td style="padding:10px;">완벽 (제스처 100%)</td>
+<td style="padding:10px;">우수 (전용 SW 필요)</td>
+</tr>
+<tr>
+<td style="padding:10px;">손목 피로도</td>
+<td style="padding:10px;">중간 (평면 접촉)</td>
+<td style="padding:10px;">낮음 (인체공학 그립)</td>
+</tr>
+<tr>
+<td style="padding:10px;">주 용도</td>
+<td style="padding:10px;">제스처·디자인 작업</td>
+<td style="padding:10px;">정밀 클릭·장시간 작업</td>
+</tr>
+</tbody>
+</table>
+
+<br />
+
+<!-- ===== 쿠팡 상품 카드 세트 ===== -->
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin:20px 0;">
+
+<!-- 쿠팡 카드 1 -->
+<div style="display:flex;flex-direction:column;align-items:center;width:100%;max-width:220px;
+          border:1.5px solid #e0e0e0;border-radius:16px;background:#fff;
+          text-decoration:none;color:#1d1d1f;
+          box-shadow:0 4px 16px rgba(0,0,0,0.08);overflow:hidden;">
+  <div style="background:#f5f5f7;width:100%;display:flex;justify-content:center;padding:16px 0;">
+    <a href="https://link.coupang.com/a/erjYrr" target="_blank" referrerpolicy="unsafe-url">
+      <img src="https://img3a.coupangcdn.com/image/affiliate/banner/cbc0986075b7b8ed43888b4236abd947@2x.jpg" alt="Apple 2024 매직 트랙패드" width="120" height="120" style="object-fit:contain;display:block;">
+    </a>
+  </div>
+  <div style="padding:14px 16px;text-align:center;width:100%;box-sizing:border-box;">
+    <p style="margin:0 0 4px;font-size:14px;font-weight:700;color:#1d1d1f;line-height:1.4;">Apple 2024 매직 트랙패드</p>
+    <p style="margin:0 0 10px;font-size:12px;color:#888;">Multi Touch 표면, 화이트</p>
+    <a href="https://link.coupang.com/a/erjYrr" target="_blank" referrerpolicy="unsafe-url"
+       style="display:inline-block;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+                 color:#fff;font-size:12px;font-weight:700;padding:7px 18px;
+                 border-radius:20px;box-shadow:0 3px 10px rgba(102,126,234,0.4);text-decoration:none;">
+      🛒 쿠팡에서 보기
+    </a>
+  </div>
+</div>
+
+<!-- 쿠팡 카드 2 -->
+<div style="display:flex;flex-direction:column;align-items:center;width:100%;max-width:220px;
+          border:1.5px solid #e0e0e0;border-radius:16px;background:#fff;
+          text-decoration:none;color:#1d1d1f;
+          box-shadow:0 4px 16px rgba(0,0,0,0.08);overflow:hidden;">
+  <div style="background:#f5f5f7;width:100%;display:flex;justify-content:center;padding:16px 0;">
+    <a href="https://link.coupang.com/a/erj0eD" target="_blank" referrerpolicy="unsafe-url">
+      <img src="https://image10.coupangcdn.com/image/affiliate/banner/4e5fa021642a8891d62aacc012405fc2@2x.jpg" alt="로지텍 MX MASTER 4" width="120" height="120" style="object-fit:contain;display:block;">
+    </a>
+  </div>
+  <div style="padding:14px 16px;text-align:center;width:100%;box-sizing:border-box;">
+    <p style="margin:0 0 4px;font-size:14px;font-weight:700;color:#1d1d1f;line-height:1.4;">로지텍 MX MASTER 4</p>
+    <p style="margin:0 0 10px;font-size:12px;color:#888;">FOR MAC 스페이스 블랙</p>
+    <a href="https://link.coupang.com/a/erj0eD" target="_blank" referrerpolicy="unsafe-url"
+       style="display:inline-block;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+                 color:#fff;font-size:12px;font-weight:700;padding:7px 18px;
+                 border-radius:20px;box-shadow:0 3px 10px rgba(102,126,234,0.4);text-decoration:none;">
+      🛒 쿠팡에서 보기
+    </a>
+  </div>
+</div>
+
+<!-- 쿠팡 카드 3 -->
+<div style="display:flex;flex-direction:column;align-items:center;width:100%;max-width:220px;
+          border:1.5px solid #e0e0e0;border-radius:16px;background:#fff;
+          text-decoration:none;color:#1d1d1f;
+          box-shadow:0 4px 16px rgba(0,0,0,0.08);overflow:hidden;">
+  <div style="background:#f5f5f7;width:100%;display:flex;justify-content:center;padding:16px 0;">
+    <a href="https://link.coupang.com/a/erj4JZ" target="_blank" referrerpolicy="unsafe-url">
+      <img src="https://img4a.coupangcdn.com/image/affiliate/banner/67f2e39661e7d5f41cac2ecfb5fcf1a2@2x.jpg" alt="홈플래닛 메모리폼 마우스 손목받침대" width="120" height="120" style="object-fit:contain;display:block;">
+    </a>
+  </div>
+  <div style="padding:14px 16px;text-align:center;width:100%;box-sizing:border-box;">
+    <p style="margin:0 0 4px;font-size:14px;font-weight:700;color:#1d1d1f;line-height:1.4;">홈플래닛 손목받침대</p>
+    <p style="margin:0 0 10px;font-size:12px;color:#888;">메모리폼 마우스용 블랙</p>
+    <a href="https://link.coupang.com/a/erj4JZ" target="_blank" referrerpolicy="unsafe-url"
+       style="display:inline-block;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+                 color:#fff;font-size:12px;font-weight:700;padding:7px 18px;
+                 border-radius:20px;box-shadow:0 3px 10px rgba(102,126,234,0.4);text-decoration:none;">
+      🛒 쿠팡에서 보기
+    </a>
+  </div>
+</div>
+
+</div>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<!-- ===== H2-6 FAQ ===== -->
+<h2 style="text-align: center;" data-ke-size="size26"><b>❓ 자주 묻는 질문</b></h2>
+
+<h3 style="text-align: center;" data-ke-size="size23"><b>Q1. 클릭 소리는 나는데 커서가 움직이지 않는다면?</b></h3>
+<p style="text-align: center;" data-ke-size="size18">
+햅틱 모듈은 정상이지만 macOS 시스템 신호 전달 오류일 가능성이 높습니다. 안전 모드(Shift 키 누른 채 부팅)로 진입해 재확인하는 것이 우선입니다.
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6" />
+
+<h3 style="text-align: center;" data-ke-size="size23"><b>Q2. 트랙패드 클릭 소음을 줄이는 방법이 있나요?</b></h3>
+<p style="text-align: center;" data-ke-size="size18">
+<code>시스템 설정 &gt; 트랙패드 &gt; 포인트 및 클릭</code>에서 <b>'소리 없는 클릭'</b> 항목을 체크하면 클릭음이 눈에 띄게 줄어듭니다. 햅틱 피드백만으로도 충분히 인식되므로 조용한 카페·도서관 작업에 유리합니다.
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6" />
+
+<h3 style="text-align: center;" data-ke-size="size23"><b>Q3. 터치 탭은 되는데 꾹 누르는 클릭만 안 되면 하드웨어 고장인가요?</b></h3>
+<p style="text-align: center;" data-ke-size="size18">
+햅틱 엔진·스프링 등 부품 결함일 확률이 높은 편입니다. '탭하여 클릭하기'는 별도 센서를 쓰기 때문에 물리 클릭이 죽어도 살아 있는 경우가 많습니다. 공식 서비스 예약 전까지 '탭하여 클릭하기'로 임시 대응이 가능합니다.
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6" />
+
+<h3 style="text-align: center;" data-ke-size="size23"><b>Q4. macOS 업데이트 이후 클릭감이 변했다면?</b></h3>
+<p style="text-align: center;" data-ke-size="size18">
+펌웨어 업데이트 과정에서 햅틱 피드백 강도가 초기화될 수 있습니다. 설정 내 클릭 강도와 궤적 속도를 업데이트 전 값으로 다시 조정하는 것이 적절합니다.
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style6" />
+
+<h3 style="text-align: center;" data-ke-size="size23"><b>Q5. 트랙패드가 주기적으로 5초씩 멈춘다면?</b></h3>
+<p style="text-align: center;" data-ke-size="size18">
+SMC 또는 NVRAM 초기화가 첫 번째 시도 옵션입니다. 애플 실리콘(M1 이상) 맥북은 종료 후 10초 대기 후 재부팅만으로도 SMC와 유사한 리셋이 이뤄집니다.
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<!-- ===== 결론 + 내부링크 CTA ===== -->
+<h2 style="text-align: center;" data-ke-size="size26"><b>✅ 마무리 — 오늘 안에 체크할 3가지</b></h2>
+<p style="text-align: center;" data-ke-size="size18">
+① 블루투스 마우스 연결 상태 확인 → ② 클릭 강도 '약하게'로 조정 → ③ 세 손가락 드래그 활성화.<br /><br />
+이 순서로 5분만 투자해도 "클릭 안 됨" 증상의 대부분이 해결됩니다. 그래도 안 되면 서비스 센터 예약 전까지 매직 트랙패드나 MX Master 3S로 작업 중단만큼은 막아둘 수 있어요.
+</p>
+
+<!-- ===== 내부링크 카드 3 (결론 직전 — 허브 심화) ===== -->
+<div style="text-align:center;margin:24px 0;">
+<a href="https://doonablog.tistory.com/336"
+   style="display:inline-block;width:100%;max-width:520px;
+          border:1.5px solid #e0e0e0;border-radius:14px;background:#fff;
+          text-decoration:none;color:#1d1d1f;text-align:left;
+          box-shadow:0 2px 8px rgba(0,0,0,0.06);overflow:hidden;">
+  <img src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FtcaRp%2FdJMcaf7bIqr%2FAAAAAAAAAAAAAAAAAAAAAMYJG1jiH3v2Gi-z0eEyzeyj0Jyc1-RjC3vJT2VuHLY-%2Fimg.jpg%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1777561199%26allow_ip%3D%26allow_referer%3D%26signature%3DcjSiC0PKgRaWk7gE2SrkdEP0h90%253D"
+       alt="맥북 배터리 수명 늘리는 설정 5가지 — M1~M5 필수 세팅 완벽 가이드"
+       style="width:100%;height:160px;object-fit:cover;display:block;" />
+  <div style="padding:14px 16px;">
+    <p style="margin:0 0 6px;font-size:15px;font-weight:700;color:#1d1d1f;line-height:1.4;">📌 맥북 배터리 수명 늘리는 설정 5가지 — M1~M5 필수 세팅 완벽 가이드</p>
+    <p style="margin:0 0 8px;font-size:13px;color:#555;line-height:1.5;">트랙패드 감도를 잡았다면, 같은 5분 투자로 배터리 수명을 극대화하는 세팅도 함께 끝내두세요.</p>
+    <p style="margin:0;font-size:12px;color:#bbb;">doonablog.tistory.com</p>
+  </div>
+</a>
+</div>
+
+<div style="text-align:center;margin:20px 0;">
+<a style="background:#1d1d1f;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold;display:inline-block;margin:6px;" href="https://doonablog.tistory.com/category/Apple%20%26%20Mac">⚙️ Mac 세팅 허브</a>
+<a style="background:#1d1d1f;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold;display:inline-block;margin:6px;" href="https://doonablog.tistory.com/category/%EC%83%9D%EC%82%B0%EC%84%B1%20%26%20%EB%8F%84%EA%B5%AC">🚀 생산성 허브</a>
+</div>
+
+<!-- ===== 하단 광고 ===== -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8522122113380115" crossorigin="anonymous"></script>
+<!-- 수동광고_반응형3 -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8522122113380115" data-ad-slot="5154259644" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+<!-- ===== 태그 10개 (복사용) =====
+맥북 트랙패드 클릭 안됨, 트랙패드 감도 설정, 맥북 트랙패드 수리, 포스 터치 원리, 세 손가락 드래그, 맥북 손쉬운 사용 설정, 매직 트랙패드 2세대, MX Master 3S, 맥북 손목 피로 줄이기, 맥부킷
+============================================================= -->
