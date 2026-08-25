@@ -21,6 +21,7 @@
 <b>애플 공식 문서로 검증해 카테고리별로 정리한 월페이퍼 5종을 무료로 드릴게요.</b><br /><br />
 ✅ <b>카테고리별로 5장을 나눴습니다</b> — 기본·화면 캡처·파인더·창 전환·텍스트 편집<br />
 ✅ <b>16인치 맥북 네이티브 3456×2234</b>로 만들었습니다 — 확대 없이 딱 맞습니다<br />
+✅ <b>버튼 하나로 내려받습니다</b> — 오른쪽 클릭 없이, 5종 ZIP 한 번에도 됩니다<br />
 ✅ <b>표기는 전부 애플 공식 한국어 문서 기준</b>입니다 — 틀린 단축키가 박힐 일이 없습니다<br />
 ✅ <b>macOS Tahoe 26에서 새로 생긴 단축키</b>도 따로 정리했습니다 — 클립보드 기록이 대표적입니다<br /><br />
 <a style="background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:15px 30px;border-radius:10px;text-decoration:none;font-weight:bold;display:inline-block;box-shadow:0 4px 15px rgba(0,0,0,0.2);" href="#wallpaper-anchor">👉 월페이퍼 5종 바로 내려받기 ↓</a>
@@ -108,9 +109,32 @@
 </p>
 
 <p style="text-align:center;line-height:1.9;margin:0 0 1.8rem;" data-ke-size="size18">
-<b>내려받는 법</b>은 간단합니다.<br />
-PC에서는 이미지를 마우스 오른쪽 클릭해 <b>'이미지를 다른 이름으로 저장'</b>을 누르세요.<br />
-아이폰·아이패드에서는 이미지를 길게 눌러 <b>'사진에 추가'</b>를 선택하시면 됩니다.
+각 이미지 아래에 <b>내려받기 버튼</b>을 뒀습니다.<br />
+버튼만 누르시면 원본 파일이 바로 저장됩니다.<br />
+오른쪽 클릭을 하실 필요가 없습니다.<br />
+다섯 장을 한 번에 받으시려면 아래 <b>전체 받기</b>를 눌러 주세요.
+</p>
+
+<script>
+function mbkDL(u,n){
+  try{
+    fetch(u).then(function(r){return r.blob();}).then(function(b){
+      var a=document.createElement('a'), o=URL.createObjectURL(b);
+      a.href=o; a.download=n; document.body.appendChild(a); a.click();
+      setTimeout(function(){URL.revokeObjectURL(o); a.remove();}, 2000);
+    })['catch'](function(){ window.open(u,'_blank','noopener'); });
+  }catch(e){ window.open(u,'_blank','noopener'); }
+  return false;
+}
+</script>
+
+<p style="text-align:center;margin:0 0 2.4rem;" data-ke-size="size18">
+<a href="https://cdn.jsdelivr.net/gh/every-git/tistory-assets@main/macbookit-tistory/images/2026-08-25-%EB%A7%A5%EB%B6%81-%EB%8B%A8%EC%B6%95%ED%82%A4-%EB%AA%A8%EC%9D%8C-%EC%9B%94%ED%8E%98%EC%9D%B4%ED%8D%BC/macbook-shortcut-wallpapers.zip"
+   style="display:inline-block;padding:16px 34px;border-radius:12px;
+          background:linear-gradient(135deg,#0071e3 0%,#5e5ce6 100%);color:#fff;
+          text-decoration:none;font-weight:700;font-size:16px;
+          box-shadow:0 6px 18px rgba(0,113,227,0.28);">⬇ 월페이퍼 5종 전체 받기 (ZIP · 7.6MB)</a><br />
+<span style="display:inline-block;margin-top:10px;font-size:13px;color:#888;">3456×2234 · 워터마크 없음 · 압축을 풀면 5장이 들어 있습니다</span>
 </p>
 
 <h3 style="text-align: center; margin:2.2rem 0 1.2rem;" data-ke-size="size23"><b>① 기본 필수 — 하루에 백 번 쓰는 여덟 개</b></h3>
@@ -126,6 +150,15 @@ PC에서는 이미지를 마우스 오른쪽 클릭해 <b>'이미지를 다른 �
   <div style="display:none; padding: 20px; background: #f9f9f9; border-radius: 12px;">🖼️ 이미지를 불러올 수 없습니다: 기본 필수 단축키 월페이퍼</div>
   <figcaption style="font-size: 0.9rem; color: #666; margin-top: 10px;">① 기본 필수 — ⌘C 복사부터 ⌘Q 앱 종료까지. 맥을 처음 잡으셨다면 이 장부터 쓰세요.</figcaption>
 </figure>
+
+<p style="text-align:center;margin:0 0 2.2rem;" data-ke-size="size18">
+<a href="https://cdn.jsdelivr.net/gh/every-git/tistory-assets@main/macbookit-tistory/images/2026-08-25-%EB%A7%A5%EB%B6%81-%EB%8B%A8%EC%B6%95%ED%82%A4-%EB%AA%A8%EC%9D%8C-%EC%9B%94%ED%8E%98%EC%9D%B4%ED%8D%BC/macbook-shortcut-wallpaper-01-basic.png" download="맥북단축키-01-기본필수.png"
+   onclick="return mbkDL(this.href,'맥북단축키-01-기본필수.png');"
+   style="display:inline-block;padding:13px 30px;border-radius:10px;
+          border:1.5px solid #2b6fd6;background:#2b6fd6;color:#fff;
+          text-decoration:none;font-weight:700;font-size:15px;
+          box-shadow:0 4px 12px rgba(0,0,0,0.14);">⬇ ① 기본 필수 내려받기</a>
+</p>
 
 <p style="text-align:center;line-height:1.9;margin:0 0 1.8rem;" data-ke-size="size18">
 여기서 하나만 더 챙기시면 좋습니다.<br />
@@ -149,6 +182,15 @@ PC에서는 이미지를 마우스 오른쪽 클릭해 <b>'이미지를 다른 �
   <figcaption style="font-size: 0.9rem; color: #666; margin-top: 10px;">② 화면 캡처 — ⇧⌘4 를 누른 뒤 스페이스를 치면 창 하나만 깔끔하게 잘립니다.</figcaption>
 </figure>
 
+<p style="text-align:center;margin:0 0 2.2rem;" data-ke-size="size18">
+<a href="https://cdn.jsdelivr.net/gh/every-git/tistory-assets@main/macbookit-tistory/images/2026-08-25-%EB%A7%A5%EB%B6%81-%EB%8B%A8%EC%B6%95%ED%82%A4-%EB%AA%A8%EC%9D%8C-%EC%9B%94%ED%8E%98%EC%9D%B4%ED%8D%BC/macbook-shortcut-wallpaper-02-screenshot.png" download="맥북단축키-02-화면캡처.png"
+   onclick="return mbkDL(this.href,'맥북단축키-02-화면캡처.png');"
+   style="display:inline-block;padding:13px 30px;border-radius:10px;
+          border:1.5px solid #7a4fd6;background:#7a4fd6;color:#fff;
+          text-decoration:none;font-weight:700;font-size:15px;
+          box-shadow:0 4px 12px rgba(0,0,0,0.14);">⬇ ② 화면 캡처 내려받기</a>
+</p>
+
 <p style="text-align:center;line-height:1.9;margin:0 0 1.8rem;" data-ke-size="size18">
 캡처 파일이 바탕화면에 쌓이는 게 싫으실 겁니다.<br />
 앞에 <b>⌃</b> 를 하나 더 붙이면 파일로 저장하지 않습니다.<br />
@@ -170,6 +212,15 @@ PC에서는 이미지를 마우스 오른쪽 클릭해 <b>'이미지를 다른 �
   <div style="display:none; padding: 20px; background: #f9f9f9; border-radius: 12px;">🖼️ 이미지를 불러올 수 없습니다: 파인더 단축키 월페이퍼</div>
   <figcaption style="font-size: 0.9rem; color: #666; margin-top: 10px;">③ 파인더 — ⌥⌘V 는 윈도우의 '잘라내기 후 붙여넣기'에 해당합니다. 맥에는 파일 ⌘X 가 없습니다.</figcaption>
 </figure>
+
+<p style="text-align:center;margin:0 0 2.2rem;" data-ke-size="size18">
+<a href="https://cdn.jsdelivr.net/gh/every-git/tistory-assets@main/macbookit-tistory/images/2026-08-25-%EB%A7%A5%EB%B6%81-%EB%8B%A8%EC%B6%95%ED%82%A4-%EB%AA%A8%EC%9D%8C-%EC%9B%94%ED%8E%98%EC%9D%B4%ED%8D%BC/macbook-shortcut-wallpaper-03-finder.png" download="맥북단축키-03-파인더.png"
+   onclick="return mbkDL(this.href,'맥북단축키-03-파인더.png');"
+   style="display:inline-block;padding:13px 30px;border-radius:10px;
+          border:1.5px solid #c47f16;background:#c47f16;color:#fff;
+          text-decoration:none;font-weight:700;font-size:15px;
+          box-shadow:0 4px 12px rgba(0,0,0,0.14);">⬇ ③ 파인더 내려받기</a>
+</p>
 
 <p style="text-align:center;line-height:1.9;margin:0 0 1.8rem;" data-ke-size="size18">
 파인더에서 제일 자주 쓰게 되는 건 <b>스페이스</b> 입니다.<br />
@@ -197,6 +248,15 @@ PC에서는 이미지를 마우스 오른쪽 클릭해 <b>'이미지를 다른 �
   <figcaption style="font-size: 0.9rem; color: #666; margin-top: 10px;">④ 창과 앱 전환 — ⌘Tab 은 앱 사이를, ⌘` 는 같은 앱의 창 사이를 오갑니다.</figcaption>
 </figure>
 
+<p style="text-align:center;margin:0 0 2.2rem;" data-ke-size="size18">
+<a href="https://cdn.jsdelivr.net/gh/every-git/tistory-assets@main/macbookit-tistory/images/2026-08-25-%EB%A7%A5%EB%B6%81-%EB%8B%A8%EC%B6%95%ED%82%A4-%EB%AA%A8%EC%9D%8C-%EC%9B%94%ED%8E%98%EC%9D%B4%ED%8D%BC/macbook-shortcut-wallpaper-04-window.png" download="맥북단축키-04-창전환.png"
+   onclick="return mbkDL(this.href,'맥북단축키-04-창전환.png');"
+   style="display:inline-block;padding:13px 30px;border-radius:10px;
+          border:1.5px solid #1f9c82;background:#1f9c82;color:#fff;
+          text-decoration:none;font-weight:700;font-size:15px;
+          box-shadow:0 4px 12px rgba(0,0,0,0.14);">⬇ ④ 창과 앱 전환 내려받기</a>
+</p>
+
 <p style="text-align:center;line-height:1.9;margin:0 0 1.8rem;" data-ke-size="size18">
 <b>⌘Tab</b> 은 눌렀다 떼면 직전 앱으로 갑니다.<br />
 <b>⌘</b> 를 누른 채로 두면 앱 목록이 떠 있고, 화살표로 골라갈 수 있습니다.<br />
@@ -218,6 +278,15 @@ PC에서는 이미지를 마우스 오른쪽 클릭해 <b>'이미지를 다른 �
   <div style="display:none; padding: 20px; background: #f9f9f9; border-radius: 12px;">🖼️ 이미지를 불러올 수 없습니다: 텍스트 편집 단축키 월페이퍼</div>
   <figcaption style="font-size: 0.9rem; color: #666; margin-top: 10px;">⑤ 텍스트 편집 — 다섯 장 중 체감이 가장 큽니다. 화살표를 연타하던 습관이 사라집니다.</figcaption>
 </figure>
+
+<p style="text-align:center;margin:0 0 2.2rem;" data-ke-size="size18">
+<a href="https://cdn.jsdelivr.net/gh/every-git/tistory-assets@main/macbookit-tistory/images/2026-08-25-%EB%A7%A5%EB%B6%81-%EB%8B%A8%EC%B6%95%ED%82%A4-%EB%AA%A8%EC%9D%8C-%EC%9B%94%ED%8E%98%EC%9D%B4%ED%8D%BC/macbook-shortcut-wallpaper-05-text.png" download="맥북단축키-05-텍스트편집.png"
+   onclick="return mbkDL(this.href,'맥북단축키-05-텍스트편집.png');"
+   style="display:inline-block;padding:13px 30px;border-radius:10px;
+          border:1.5px solid #d6417a;background:#d6417a;color:#fff;
+          text-decoration:none;font-weight:700;font-size:15px;
+          box-shadow:0 4px 12px rgba(0,0,0,0.14);">⬇ ⑤ 텍스트 편집 내려받기</a>
+</p>
 
 <p style="text-align:center;line-height:1.9;margin:0 0 1.8rem;" data-ke-size="size18">
 이 장에는 규칙이 하나 숨어 있습니다.<br />
@@ -245,7 +314,7 @@ macOS Tahoe 26 기준이며, 세쿼이아·소노마도 거의 같습니다.
 <td style="padding:10px;text-align:center;"><b>단계</b></td>
 <td style="padding:10px;text-align:center;"><b>할 일</b></td>
 </tr>
-<tr><td style="padding:8px;text-align:center;"><b>①</b></td><td style="padding:8px;text-align:center;">이미지를 저장 (오른쪽 클릭 → 다른 이름으로 저장)</td></tr>
+<tr><td style="padding:8px;text-align:center;"><b>①</b></td><td style="padding:8px;text-align:center;">위에서 <b>내려받기 버튼</b>을 눌러 저장</td></tr>
 <tr><td style="padding:8px;text-align:center;"><b>②</b></td><td style="padding:8px;text-align:center;"><b>시스템 설정</b> → <b>배경화면</b></td></tr>
 <tr><td style="padding:8px;text-align:center;"><b>③</b></td><td style="padding:8px;text-align:center;"><b>사용자의 사진</b> → <b>사진 추가…</b> → 저장한 파일 선택</td></tr>
 </tbody>
