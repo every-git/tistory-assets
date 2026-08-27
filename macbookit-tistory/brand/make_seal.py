@@ -5,8 +5,9 @@
 디자인 정본: Blog-strategy/system/cupertino-design.md §9
 
 사용:
-  python3 make_seal.py                       # ink/light 2종을 1024px PNG 로
+  python3 make_seal.py                        # 도장 ink/light 2종을 1024px PNG 로
   python3 make_seal.py --size 512 --tone ink
+  python3 make_seal.py --lockup               # 헤더 로고(도장+맥부킷 워드마크), 높이 128px=64@2x
 """
 import argparse
 from pathlib import Path
@@ -57,14 +58,82 @@ def build(size: int, tone: str) -> Image.Image:
     return img
 
 
+def build_icon(size: int, glyph: str = "맥") -> Image.Image:
+    """파비콘·프로필용 «채운» 도장 — 그래파이트 바탕에 흰 글자 한 자.
+
+    16~32px 에서는 2x2 네 글자가 뭉갠다. 아이콘은 한 글자만 남긴다.
+    """
+    ink = TONES["ink"]
+    img = Image.new("RGBA", (size, size), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle((0, 0, size - 1, size - 1),
+                        radius=round(size * 0.225), fill=ink + (255,))
+    f = ImageFont.truetype(FONT, round(size * 0.60), index=6)  # Bold
+    bb = d.textbbox((0, 0), glyph, font=f)
+    w, h = bb[2] - bb[0], bb[3] - bb[1]
+    d.text(((size - w) / 2 - bb[0], (size - h) / 2 - bb[1]), glyph,
+           font=f, fill=(255, 255, 255, 255))
+    return img
+
+
+def build_lockup(h: int, tone: str) -> Image.Image:
+    """헤더 로고 — 도장 + 「맥부킷」 워드마크 가로 조합.
+
+    티스토리 Book Club 스킨의 「로고(높이 64px)」에 넣는다.
+    h=128 로 만들어 2x 로 쓴다(레티나).
+    """
+    color = TONES[tone]
+    seal_side = round(h * 0.80)
+    seal = build(seal_side, tone)
+
+    gap = round(h * 0.17)
+    word = "맥부킷"
+    wf = ImageFont.truetype(FONT, round(h * 0.46), index=FONT_IDX)
+    track = round(h * -0.012)  # 애플식 타이트 자간
+
+    probe = ImageDraw.Draw(Image.new("RGBA", (1, 1)))
+    widths = [probe.textlength(c, font=wf) for c in word]
+    word_w = round(sum(widths) + track * (len(word) - 1))
+
+    img = Image.new("RGBA", (seal_side + gap + word_w, h), (0, 0, 0, 0))
+    img.alpha_composite(seal, (0, (h - seal_side) // 2))
+
+    d = ImageDraw.Draw(img)
+    bb = d.textbbox((0, 0), word, font=wf)
+    y = (h - (bb[3] - bb[1])) / 2 - bb[1]
+    x = seal_side + gap
+    for i, c in enumerate(word):
+        d.text((x, y), c, font=wf, fill=color + (255,))
+        x += widths[i] + track
+    return img
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--size", type=int, default=1024)
     ap.add_argument("--tone", choices=list(TONES) + ["all"], default="all")
+    ap.add_argument("--lockup", action="store_true",
+                    help="헤더 로고(도장+워드마크). --size 는 «높이»로 해석(기본 128=64@2x)")
+    ap.add_argument("--icon", action="store_true",
+                    help="파비콘·프로필용 채운 아이콘(그래파이트 바탕 + 흰 「맥」)")
     ap.add_argument("--outdir", default=str(Path(__file__).parent))
     a = ap.parse_args()
 
     tones = list(TONES) if a.tone == "all" else [a.tone]
+    if a.icon:
+        n = a.size if a.size != 1024 else 512
+        out = Path(a.outdir) / "icon-seal.png"
+        build_icon(n).save(out)
+        print(f"✓ {out}  ({n}x{n})")
+        return
+    if a.lockup:
+        h = a.size if a.size != 1024 else 128
+        for t in tones:
+            out = Path(a.outdir) / f"logo-lockup-{t}.png"
+            im = build_lockup(h, t)
+            im.save(out)
+            print(f"✓ {out}  ({im.width}x{im.height}, {t})")
+        return
     for t in tones:
         out = Path(a.outdir) / f"seal-{t}.png"
         build(a.size, t).save(out)
