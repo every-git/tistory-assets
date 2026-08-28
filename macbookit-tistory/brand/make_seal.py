@@ -65,6 +65,29 @@ def build_circle(size: int, tone: str, filled: bool = True) -> Image.Image:
     return img
 
 
+def build_lockup_circle(h: int = 128, tone: str = "ink", word: str = "맥부킷") -> Image.Image:
+    """헤더 로고 — 원형 ⌘ + 워드마크. 프로필(profile-circle.png)과 같은 마크를 쓴다.
+
+    🚨 스킨은 이 로고를 **32px 로 렌더**한다(라벨은 「높이 64px」이지만 실측 32).
+       2×2 도장을 그대로 줄이면 네 글자가 뭉개져 회색 얼룩이 된다(2026-08-28 실측).
+       원형 ⌘ 는 형태가 단순해 32px 에서도 남는다 — 이름은 워드마크가 진다.
+    """
+    from PIL import Image as _I
+    base = Path(__file__).parent / "profile-circle.png"
+    ic = _I.open(base).convert("RGBA").resize((h, h), _I.LANCZOS)
+    color = TONES[tone]
+    f = ImageFont.truetype(FONT, round(h * 0.62), index=6)   # Bold
+    probe = ImageDraw.Draw(_I.new("RGB", (10, 10)))
+    bb = probe.textbbox((0, 0), word, font=f)
+    tw, th = bb[2] - bb[0], bb[3] - bb[1]
+    gap = round(h * 0.30)
+    im = _I.new("RGBA", (h + gap + tw, h), (0, 0, 0, 0))
+    im.paste(ic, (0, 0), ic)
+    ImageDraw.Draw(im).text((h + gap - bb[0], h / 2 - th / 2 - bb[1]), word,
+                            font=f, fill=color + (255,))
+    return im
+
+
 def squircle(draw, box, radius, color, width):
     """Pillow 의 rounded_rectangle 로 애플식 큰 라운드 사각을 그린다."""
     draw.rounded_rectangle(box, radius=radius, outline=color, width=width)
