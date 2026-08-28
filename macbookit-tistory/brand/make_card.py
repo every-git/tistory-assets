@@ -39,11 +39,9 @@ def main() -> int:
     ap.add_argument("--date", default="2026-08")
     ap.add_argument("--palette", choices=sorted(PALETTES), default="clay",
                     help="clay=Claude code · blue=Apple & Mac")
-    ap.add_argument("--title-px", type=int, default=138,
-                    help="제목 크기. 라틴 단어가 길면 줄인다(기본 138)")
     a = ap.parse_args()
 
-    pal = PALETTES[a.palette] + f"\n.mid h1{{font-size:{a.title_px}px}}"
+    pal = PALETTES[a.palette]
     html = TPL.format(css=BRAND / "card-vertical.css", palette=pal,
                       kicker=a.kicker,
                       title=a.title.replace("|", "<br>"),
