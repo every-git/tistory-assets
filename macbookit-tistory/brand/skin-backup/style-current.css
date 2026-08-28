@@ -4777,5 +4777,5 @@ body { background: #FFFFFF; }
   body.cat-claude-code #content .entry-content { background:#FAF9F5; }
   /* Apple & Mac · IT news — 흰 바탕(cupertino) */
   body.cat-apple-mac #content .entry-content,
-  body.cat-it-news #content .entry-content { background:#FFFFFF; }
+  body.cat-it-news #content .entry-content { background:#F5F5F7; }
 }
