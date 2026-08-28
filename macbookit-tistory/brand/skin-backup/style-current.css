@@ -4854,3 +4854,14 @@ body { background: #FFFFFF; }
   .post-toplist .d { font-size:12.5px; }
   .post-byline .inner { padding:18px 0 4px; }
 }
+
+/* 사이드 레일 — 카드 «바깥» 여백에만. 콘텐츠를 절대 덮지 않는다. --unify-railad
+   카드 1000 → 반폭 500. 그 밖으로 28px 띄우고 160px 레일을 세운다.
+   1440px 미만에서는 자리가 없으므로 아예 감춘다(JS 도 요청하지 않는다). */
+.rail-ad { display:none; }
+@media screen and (min-width:1440px) {
+  .rail-ad { display:block; position:fixed; top:50%; transform:translateY(-50%);
+    width:160px; z-index:5; }
+  .rail-left  { left:calc(50% - 500px - 28px - 160px); }
+  .rail-right { right:calc(50% - 500px - 28px - 160px); }
+}

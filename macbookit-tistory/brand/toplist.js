@@ -59,3 +59,17 @@
   var key = el.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   if (key) document.body.classList.add('cat-' + key);
 })();
+
+/* 사이드 레일 — 자동광고를 켜지 않고 직접 배치한다.
+   자동광고 마스터를 켜면 인페이지·멀티플렉스·«광고 인텐트»(본문 글자를 링크로 바꾼다)까지
+   딸려 와 광고 밀도 정본이 깨진다(2026-08-27 결정). 그래서 <ins> 를 스킨에 박고
+   여기서 직접 push 한다.
+   ⚠️ 자리가 없는 화면에서는 «요청조차 하지 않는다» — 빈 슬롯이 콘텐츠를 밀지 않게. */
+(function () {
+  if (window.innerWidth < 1440) return;
+  var rails = document.querySelectorAll('.rail-ad ins.adsbygoogle');
+  if (!rails.length) return;
+  for (var i = 0; i < rails.length; i++) {
+    try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
+  }
+})();
