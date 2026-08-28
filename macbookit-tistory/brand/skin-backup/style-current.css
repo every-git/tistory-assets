@@ -4735,12 +4735,12 @@ body { background: #FFFFFF; }
    --unify-card */
 @media screen and (min-width:768px) {
   html, body { background:#F1F1F1; }
-  #wrap { max-width:1128px; margin:0 auto; background:#FFFFFF;
-    box-shadow:0 0 0 1px rgba(0,0,0,.04); }
+  #wrap { max-width:1000px; margin:0 auto; background:#FFFFFF;
+    box-shadow:0 0 0 1px rgba(0,0,0,.05); }
   #header, #container { background:#FFFFFF; }
   .brand-banner, #gnb, .cat-bar,
   .post-toplist .inner, .post-byline .inner,
-  .content-wrap { max-width:1024px; }
+  .content-wrap { max-width:900px; }
   .content-wrap { padding-left:0; padding-right:0; }
 }
 
@@ -4765,4 +4765,17 @@ body { background: #FFFFFF; }
   .brand-banner { margin-top:14px; }
   .cat-bar { padding-bottom:14px; }
   .post-toplist .inner { padding-top:26px; }
+}
+
+/* 본문 바탕은 «크림»이다 — claude-design.md 정본(크림 바탕·클레이 액센트).
+   순백 위에 올리면 조판의 색이 죽는다. 스킨은 카테고리를 모르므로
+   toplist.js 가 body 에 붙여 주는 cat-* 클래스로 가른다. --unify-paper */
+@media screen and (min-width:768px) {
+  #content .entry-content { width:900px; max-width:900px; margin:0 auto;
+    padding:40px 44px 56px; box-sizing:border-box; }
+  /* Claude code — 크림 */
+  body.cat-claude-code #content .entry-content { background:#FAF9F5; }
+  /* Apple & Mac · IT news — 흰 바탕(cupertino) */
+  body.cat-apple-mac #content .entry-content,
+  body.cat-it-news #content .entry-content { background:#FFFFFF; }
 }

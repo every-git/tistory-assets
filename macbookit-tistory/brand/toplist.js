@@ -49,3 +49,13 @@
     })
     .catch(function () { box.style.display = 'none'; });  // 실패하면 조용히 감춘다
 })();
+
+/* 카테고리를 body 클래스로 옮긴다 — 스킨 CSS 는 카테고리를 모른다.
+   맥부킷은 «색이 카테고리를 가르므로»(Claude code=크림·클레이 / Apple & Mac=흰·블루)
+   본문 바탕색을 이 클래스로 고른다. */
+(function () {
+  var el = document.querySelector('.post-byline .category, .post-cover .category');
+  if (!el) return;
+  var key = el.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  if (key) document.body.classList.add('cat-' + key);
+})();
