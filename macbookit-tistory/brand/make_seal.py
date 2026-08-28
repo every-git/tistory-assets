@@ -23,6 +23,48 @@ TONES = {
 GLYPHS = (("맥", "부"), ("킷", "⌘"))
 
 
+def build_circle(size: int, tone: str, filled: bool = True) -> Image.Image:
+    """원형 도장 — 프로필·대표 이미지용. 2×2 「맥 부 / 킷 ⌘」 를 원 안에 담는다.
+
+    정본 §9 는 «정사각» 도장이지만, 프로필 자리는 플랫폼이 원형으로 깎는다.
+    사각 도장을 그대로 넣으면 모서리 글자가 잘린다 → 원 전용 배치가 필요하다.
+      filled=True   그래파이트 원 + 흰 글자   (배경이 뭐든 또렷하다 · 기본)
+      filled=False  종이 원 + 그래파이트 테두리·글자 (잉크 도장에 가깝다)
+
+    ⚠️ 16~32px(파비콘)에는 쓰지 않는다 — 2×2 가 뭉갠다. 그 자리는 --icon.
+    """
+    color = TONES[tone]
+    paper = (255, 255, 255)
+    img = Image.new("RGBA", (size, size), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+
+    box = (0, 0, size - 1, size - 1)
+    if filled:
+        d.ellipse(box, fill=color + (255,))
+        ink = paper
+        inner = size * 0.62          # 채운 원은 테두리가 없어 글자를 더 크게 쓴다
+    else:
+        stroke = max(2, round(size * 0.030))
+        d.ellipse(box, fill=paper + (255,), outline=color + (255,), width=stroke)
+        ink = color
+        inner = size * 0.56
+
+    cell = inner / 2
+    ox = oy = (size - inner) / 2
+    han = ImageFont.truetype(FONT, round(cell * 0.62), index=FONT_IDX)
+    sym = ImageFont.truetype(FONT, round(cell * 0.70), index=FONT_IDX)
+
+    for r, row in enumerate(GLYPHS):
+        for c, ch in enumerate(row):
+            font = han if "가" <= ch <= "힣" else sym
+            cx = ox + cell * (c + 0.5)
+            cy = oy + cell * (r + 0.5)
+            bb = d.textbbox((0, 0), ch, font=font)
+            w, h = bb[2] - bb[0], bb[3] - bb[1]
+            d.text((cx - w / 2 - bb[0], cy - h / 2 - bb[1]), ch, font=font, fill=ink + (255,))
+    return img
+
+
 def squircle(draw, box, radius, color, width):
     """Pillow 의 rounded_rectangle 로 애플식 큰 라운드 사각을 그린다."""
     draw.rounded_rectangle(box, radius=radius, outline=color, width=width)
@@ -114,6 +156,10 @@ def main():
     ap.add_argument("--tone", choices=list(TONES) + ["all"], default="all")
     ap.add_argument("--lockup", action="store_true",
                     help="헤더 로고(도장+워드마크). --size 는 «높이»로 해석(기본 128=64@2x)")
+    ap.add_argument("--circle", action="store_true",
+                    help="원형 도장(프로필·대표 이미지). 2×2 를 원 안에 담는다")
+    ap.add_argument("--outline", action="store_true",
+                    help="--circle 과 함께: 채우지 않고 종이 원 + 테두리로")
     ap.add_argument("--icon", action="store_true",
                     help="파비콘·프로필용 채운 아이콘(그래파이트 바탕 + 흰 「맥」)")
     ap.add_argument("--outdir", default=str(Path(__file__).parent))
