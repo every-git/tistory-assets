@@ -4767,3 +4767,79 @@ body {
   .rail-left  { left:calc(50% - 500px - 28px - 160px); }
   .rail-right { right:calc(50% - 500px - 28px - 160px); }
 }
+
+
+/* ═══════════════════════════════════════════════════════════
+   본문 폭 네이버 정렬 + 목록 통일 + 사이드 레일 자리 — 2026-08-28
+   되돌리기: 이 블록만 통째로 삭제
+   직전 백업: kyungja-tistory/brand/skin-backup/style-PRE-width-20260828-195634.css
+
+   실측(1600px 창): 네이버 블로그 컨테이너 787 · 글줄 707
+   ⚠️ 특이도 주의 — 아래 두 규칙이 기본값을 쥐고 있어 같은 무게로 덮어야 한다.
+      · #content .entry-content { width:900px }                          (1,0,1,0)
+      · .list-type-vertical .post-item .thum { padding-bottom:130.43% }  (0,0,3,0)
+   .entry-content 는 box-sizing:border-box + 좌우 패딩 44px → 707+88 = 795px.
+   ═══════════════════════════════════════════════════════════ */
+@media screen and (min-width: 768px) {
+  #content .entry-content { width: 795px; max-width: 795px; }
+  .post-byline .inner, .post-toplist .inner { max-width: 795px; }
+  #content .entry-content img,
+  #content .entry-content figure,
+  #content .entry-content table,
+  #content .entry-content pre { max-width: 100%; }
+  #content .entry-content table { display: block; overflow-x: auto; width: 100%; }
+}
+
+/* 목록 카드 — 맥부킷과 동일 규격. --unify-list */
+.post-item .thum,
+.list-type-vertical .post-item .thum {
+  padding-bottom: 75%;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  background-color: #E9E7E0;
+}
+.post-item .thum img,
+.list-type-vertical .post-item .thum img {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transform: none; -webkit-transform: none;
+}
+.post-item .excerpt,
+.list-type-vertical .post-item .excerpt { display: none; }
+.post-item .title { font-size: 15px; line-height: 1.45; margin-bottom: 6px; }
+.post-item .meta { font-size: 12.5px; }
+.post-item { margin-bottom: 40px; }
+@media screen and (max-width: 767px) {
+  .post-item .thum,
+  .list-type-vertical .post-item .thum { padding-bottom: 62%; }
+  .post-item .title { font-size: 14.5px; }
+}
+
+/* 사이드 레일 자리 — 맥부킷과 같은 규격. --unify-rail
+   레일 1개(160px) + 숨통(24px) = 한쪽 184px 를 카드 «바깥»에 남긴다.
+   ⚠️ 티스토리가 금지한 건 앵커(2025-06-01)·전면광고(2025-09-03)다. 레일은 허용. */
+@media screen and (min-width:1400px) { #wrap { max-width:1000px; } }
+@media screen and (min-width:768px) and (max-width:1399px) {
+  #wrap { max-width:calc(100vw - 96px); }
+}
+/* 레일 자체 — 콘텐츠를 절대 덮지 않는다. --unify-railad
+   1440px 미만에선 자리가 없으므로 감춘다(JS 도 요청하지 않는다). */
+.rail-ad { display:none; }
+@media screen and (min-width:1440px) {
+  .rail-ad { display:block; position:fixed; top:50%; transform:translateY(-50%);
+    width:160px; z-index:5; }
+  .rail-left  { left:calc(50% - 500px - 28px - 160px); }
+  .rail-right { right:calc(50% - 500px - 28px - 160px); }
+}
+
+
+/* 사이드바를 접고 본문이 폭을 다 쓴다 — 맥부킷과 같은 뼈대. --unify-content
+   ⚠️ #aside 는 이미 폭 0 인데 #content 가 float:left; width:658px 로 묶여 있어서
+      본문이 왼쪽에 붙고 가운데 정렬이 안 됐다(2026-08-28 실측). float 를 푼다. */
+@media screen and (min-width: 768px) {
+  #aside { display: none; }
+  #content { width: 100%; max-width: none; float: none; padding-top: 0; }
+  .content-wrap:before { display: none; }
+  .content-wrap:after { width: auto; }
+}

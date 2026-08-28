@@ -4865,3 +4865,54 @@ body { background: #FFFFFF; }
   .rail-left  { left:calc(50% - 500px - 28px - 160px); }
   .rail-right { right:calc(50% - 500px - 28px - 160px); }
 }
+
+
+/* ═══════════════════════════════════════════════════════════
+   본문 폭 네이버 정렬 + 목록 통일 — 2026-08-28
+   되돌리기: 이 블록만 통째로 삭제
+   직전 백업: macbookit-tistory/brand/skin-backup/style-PRE-width-20260828-195634.css
+
+   실측(1600px 창): 네이버 블로그 컨테이너 787 · 글줄 707
+   ⚠️ 특이도 주의 — 아래 두 규칙이 기본값을 쥐고 있어서 반드시 같은 무게로 덮어야 한다.
+      · #content .entry-content { width:900px }            ← ID 라 (1,0,1,0)
+      · .list-type-vertical .post-item .thum { padding-bottom:130.43% }  ← (0,0,3,0)
+      낮은 특이도로 쓰면 조용히 안 먹는다(2026-08-28 실제로 한 번 밟았다).
+   .entry-content 는 box-sizing:border-box + 좌우 패딩 44px → 707+88 = 795px.
+   ═══════════════════════════════════════════════════════════ */
+@media screen and (min-width: 768px) {
+  #content .entry-content { width: 795px; max-width: 795px; }
+  .post-byline .inner, .post-toplist .inner { max-width: 795px; }
+  #content .entry-content img,
+  #content .entry-content figure,
+  #content .entry-content table,
+  #content .entry-content pre { max-width: 100%; }
+  #content .entry-content table { display: block; overflow-x: auto; width: 100%; }
+}
+
+/* 목록 카드 — 두 블로그 동일 규격. --unify-list
+   130.43%(=1:1.3 세로) 는 카드 한 장이 화면 절반을 먹는다. 4:3 으로 낮춘다.
+   기본 스킨의 translateY 는 세로 카드에서 제목을 잘라 먹어 object-fit 으로 바꾼다. */
+.post-item .thum,
+.list-type-vertical .post-item .thum {
+  padding-bottom: 75%;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  background-color: #F1F1F1;
+}
+.post-item .thum img,
+.list-type-vertical .post-item .thum img {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transform: none; -webkit-transform: none;
+}
+.post-item .excerpt,
+.list-type-vertical .post-item .excerpt { display: none; }
+.post-item .title { font-size: 15px; line-height: 1.45; margin-bottom: 6px; }
+.post-item .meta { font-size: 12.5px; }
+.post-item { margin-bottom: 40px; }
+@media screen and (max-width: 767px) {
+  .post-item .thum,
+  .list-type-vertical .post-item .thum { padding-bottom: 62%; }
+  .post-item .title { font-size: 14.5px; }
+}
