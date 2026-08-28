@@ -73,3 +73,9 @@
     try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
   }
 })();
+
+/* 카테고리가 없는 블로그(개설 직후)에서는 카테고리 바가 빈 줄로 남는다 — 감춘다. */
+(function () {
+  var bar = document.querySelector('.cat-bar');
+  if (bar && !bar.querySelector('a')) bar.style.display = 'none';
+})();

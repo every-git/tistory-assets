@@ -22,6 +22,12 @@ PALETTES = {
     "clay": "",   # 기본값(CSS :root)을 그대로 쓴다 — Claude code
     "blue": (":root{--bg:#F5F5F7;--kicker:#0066CC;--rule:#0071E3;"
              "--title:#1D1D1F;--sub:#6E6E73;--hair:#D2D2D7;--foot:#6E6E73}"),
+    # 공공 신청 — 남색
+    "navy": (":root{--bg:#F4F3F0;--kicker:#2F4F6F;--rule:#2F4F6F;"
+             "--title:#1A1A1A;--sub:#4A4A48;--hair:#DFDCD5;--foot:#8C887F}"),
+    # 자동차 생활 — 테라코타
+    "terra": (":root{--bg:#F5F2EE;--kicker:#A8452A;--rule:#A8452A;"
+              "--title:#1A1A1A;--sub:#4A4A48;--hair:#E0D9D2;--foot:#8C887F}"),
     # 도와줘요 경자씨 — 경자 그린 + 종이 크림(kyungja 프로필 paper #F2F1ED)
     "green": (":root{--bg:#F2F1ED;--kicker:#1E6E46;--rule:#1E6E46;"
               "--title:#1A1A1A;--sub:#4A4A48;--hair:#DFDCD3;--foot:#8C887F}"),
