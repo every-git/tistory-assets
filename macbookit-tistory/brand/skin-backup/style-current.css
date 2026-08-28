@@ -4645,8 +4645,7 @@ body { background: #FFFFFF; }
    ──────────────────────────────────────────────────────────── */
 
 /* ① 브랜드 배너 */
-.brand-banner { display:block; max-width:1080px; margin:0 auto; line-height:0; }
-.brand-banner img { width:100%; height:auto; display:block; }
+/* 배너는 HTML 이다(2026-08-28) — 이미지 한 장이면 배경색이 카테고리를 못 따라간다. */
 
 /* ② 글 상단 목록 — 네이버의 「전체보기 N개의 글」 자리 */
 .post-toplist { background:#fff; padding:0 24px; }
@@ -4778,4 +4777,49 @@ body { background: #FFFFFF; }
   /* Apple & Mac · IT news — 흰 바탕(cupertino) */
   body.cat-apple-mac #content .entry-content,
   body.cat-it-news #content .entry-content { background:#F5F5F7; }
+}
+
+/* ── 카드 «전체»를 카테고리 색으로 ─────────────────────────────
+   본문만 칠하면 배너·메뉴·목록이 흰색으로 남아 층이 진다(2026-08-28 지적).
+   toplist.js 가 body 에 붙이는 cat-* 로 #wrap 을 통째로 칠한다. --unify-fill */
+@media screen and (min-width:768px) {
+  #wrap,
+  #header, #container, .content-wrap, #content,
+  .post-toplist, .post-byline { background:transparent; }
+  #wrap { background:#F5F5F7; }                     /* 기본 = 애플 그레이 */
+  body.cat-claude-code #wrap { background:#FAF9F5; } /* Claude code = 크림 */
+  body.cat-apple-mac #wrap,
+  body.cat-it-news  #wrap { background:#F5F5F7; }
+  /* 본문 개별 배경은 이제 필요 없다 — 카드색을 그대로 물려받는다 */
+  body.cat-claude-code #content .entry-content,
+  body.cat-apple-mac #content .entry-content,
+  body.cat-it-news #content .entry-content { background:transparent; }
+
+  /* 배너 — HTML. 배경을 안 깔아야 카드색이 그대로 비친다 */
+  .brand-banner { display:flex; align-items:center; justify-content:space-between;
+    gap:18px; max-width:900px; margin:0 auto; padding:22px 0 18px;
+    text-decoration:none; border-bottom:6px solid #141414; }
+  .bb-txt { display:block; }
+  .bb-badge { display:inline-block; background:#E3ECF7; color:#0066CC;
+    font-family:"Pretendard-ExtraBold","Apple SD Gothic Neo",sans-serif;
+    font-size:15px; line-height:1; padding:7px 15px; border-radius:999px;
+    margin-bottom:14px; }
+  .bb-title { display:block;
+    font-family:"Pretendard-Black","Apple SD Gothic Neo",sans-serif;
+    font-size:42px; line-height:1.2; letter-spacing:-.035em; color:#141414; }
+  .bb-sub { display:block; margin-top:13px; font-size:16px; color:#3A3A3C;
+    letter-spacing:-.012em;
+    font-family:"Pretendard-ExtraBold","Apple SD Gothic Neo",sans-serif; }
+  .bb-sub b { color:#0066CC; font-weight:inherit; }
+  .bb-art { flex:none; width:290px; height:auto; display:block; }
+}
+@media screen and (max-width:767px) {
+  .brand-banner { display:block; padding:18px 20px; text-decoration:none;
+    border-bottom:5px solid #141414; }
+  .bb-title { display:block; font-size:26px; line-height:1.24; color:#141414;
+    font-family:"Pretendard-Black","Apple SD Gothic Neo",sans-serif; }
+  .bb-badge { display:inline-block; background:#E3ECF7; color:#0066CC;
+    font-size:13px; padding:5px 12px; border-radius:999px; margin-bottom:10px; }
+  .bb-sub { display:block; margin-top:10px; font-size:13px; color:#3A3A3C; }
+  .bb-art { display:none; }
 }
