@@ -44,6 +44,8 @@ def main() -> int:
     ap.add_argument("--mark", default="profile-circle.png",
                     help="우측 원형 심볼 파일명 (brand/ 기준). 'none' 이면 뺀다")
     ap.add_argument("--palette", choices=sorted(PALETTES), default="blue")
+    ap.add_argument("--mark-plain", action="store_true",
+                    help="심볼을 원형으로 자르지 않고 그대로 얹는다(일러스트용)")
     ap.add_argument("--out", required=True, help="결과 png 경로 (brand/ 기준 가능)")
     a = ap.parse_args()
 
@@ -52,7 +54,8 @@ def main() -> int:
         p = (BRAND / a.mark).resolve()
         if not p.exists():
             raise SystemExit(f"심볼 파일이 없습니다: {p}")
-        mark = f'<div class="mark"><img src="file://{p}"></div>'
+        cls = "mark plain" if a.mark_plain else "mark"
+        mark = f'<div class="{cls}"><img src="file://{p}"></div>'
 
     sub = a.sub
     while "*" in sub:                      # *…* → <b>…</b>
