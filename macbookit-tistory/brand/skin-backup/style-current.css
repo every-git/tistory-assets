@@ -4811,7 +4811,7 @@ body { background: #FFFFFF; }
     letter-spacing:-.012em;
     font-family:"Pretendard-ExtraBold","Apple SD Gothic Neo",sans-serif; }
   .bb-sub b { color:#0066CC; font-weight:inherit; }
-  .bb-art { flex:none; width:290px; height:auto; display:block; }
+  .bb-art { flex:none; height:150px; width:auto; display:block; margin-right:4px; }
 }
 @media screen and (max-width:767px) {
   .brand-banner { display:block; padding:18px 20px; text-decoration:none;
@@ -4822,4 +4822,15 @@ body { background: #FFFFFF; }
     font-size:13px; padding:5px 12px; border-radius:999px; margin-bottom:10px; }
   .bb-sub { display:block; margin-top:10px; font-size:13px; color:#3A3A3C; }
   .bb-art { display:none; }
+}
+
+/* 사이드 레일 자리 — 애드센스 자동광고(사이드 레일)는 카드 «바깥» 여백에 뜬다.
+   카드가 넓으면 뜰 자리가 없고, 너무 좁으면 본문이 답답하다.
+   레일 1개(160px) + 숨통(24px) = 한쪽 184px 를 남긴다. --unify-rail
+   ⚠️ 티스토리가 금지한 건 앵커(2025-06-01)·전면광고(2025-09-03)다. 레일은 허용. */
+@media screen and (min-width:1400px) {
+  #wrap { max-width:1000px; }
+}
+@media screen and (min-width:768px) and (max-width:1399px) {
+  #wrap { max-width:calc(100vw - 96px); }
 }
