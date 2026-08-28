@@ -1,0 +1,10 @@
+body{margin:0;width:1080px;height:1350px;background:#FAF9F5;
+     font-family:"Pretendard-Regular","Apple SD Gothic Neo",sans-serif;
+     display:flex;flex-direction:column;justify-content:space-between;
+     padding:86px 76px 78px;box-sizing:border-box}
+.top{font-size:40px;color:#A8452A;letter-spacing:.04em;font-weight:700}
+.mid h1{margin:0;font-size:138px;line-height:1.2;color:#191919;font-weight:700;letter-spacing:-.045em}
+.mid .rule{border-bottom:8px solid #D97757;width:170px;margin:44px 0 40px}
+.mid .sub{font-size:50px;color:#4A4742;line-height:1.45;font-weight:500}
+.bot{display:flex;justify-content:space-between;align-items:flex-end;
+     border-top:2px solid #E5E1D8;padding-top:30px;font-size:30px;color:#8C887F}
