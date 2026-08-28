@@ -4843,3 +4843,117 @@ body {
   .content-wrap:before { display: none; }
   .content-wrap:after { width: auto; }
 }
+
+
+/* ═══════════════════════════════════════════════════════════
+   목록을 «색인» 형태로 — press.playw.work/trend 조판.  --unify-index
+   되돌리기: 이 블록만 지우면 직전의 카드 목록으로 돌아간다.
+
+   왜: 카드 목록은 글마다 카드 이미지를 만들어야 하고, 그 카드가 검색 포털의
+       대표이미지까지 차지한다. 색인형은 목록에 이미지가 필요 없어서,
+       대표이미지 자리를 «본문 히어로»에 넘겨줄 수 있다(hero_thumb.py).
+   구조: 티스토리 마크업 a > .thum + .title + .excerpt + .meta 를
+        flex + order 로 «날짜 | 제목» 한 줄로 다시 세운다.
+   ⚠️ .excerpt 는 숨긴다 — 본문 첫 요소가 제목 h1 이라(스킨이 제목을 안 그려서
+      넣은 것) 발췌문이 «제목+제목+요약» 으로 시작한다(2026-08-28 실측).
+   ⚠️ !important 를 쓰는 이유: 스킨 원본이 .list-type-thumbnail .post-item .thum
+      처럼 (0,0,3,0) 으로 잡아 놔서 .post-item .thum (0,0,2,0) 이 그냥 진다.
+   ═══════════════════════════════════════════════════════════ */
+.post-item .thum,
+.post-item .excerpt { display: none !important; }
+
+@media screen and (min-width: 768px) {
+  .post-item {
+    float: none !important; width: 100% !important; margin: 0 !important;
+    border-bottom: 1px solid #E8E8ED;
+  }
+  .post-item:first-child { border-top: 1px solid #E8E8ED; }
+  .post-item a {
+    display: flex !important; align-items: baseline; gap: 26px; padding: 18px 2px !important;
+  }
+  .post-item .meta {
+    order: 1 !important; flex: 0 0 96px; margin: 0 !important;
+    font-size: 13px; color: #86868B; white-space: nowrap;
+  }
+  .post-item .meta span:before { display: none !important; }
+  .post-item .title {
+    order: 2 !important; flex: 1 1 auto; min-width: 0; margin: 0 !important;
+    font-size: 16px !important; line-height: 1.5 !important; color: #1D1D1F;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .post-item a:hover .title { text-decoration: underline; }
+}
+
+@media screen and (max-width: 767px) {
+  .post-item {
+    float: none !important; width: 100% !important; margin: 0 !important;
+    border-bottom: 1px solid #E8E8ED;
+  }
+  .post-item a { display: block !important; padding: 15px 0 !important; }
+  .post-item .title {
+    display: block; font-size: 15px !important; line-height: 1.5 !important;
+    white-space: normal; margin: 0 0 5px !important;
+  }
+  .post-item .meta { font-size: 12.5px; color: #86868B; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   머리말·목록을 본문과 «같은 세로선»에.  --unify-align   (2026-08-28)
+   되돌리기: 이 블록만 지우면 머리말이 다시 900px 로 돌아간다.
+
+   ── 왜 ─────────────────────────────────────────────────────
+   네이버 폭 맞추기(--unify-naver)에서 본문·바이라인·상단목록만 795 로 줄이고
+   «머리말 3형제»를 900 인 채로 뒀다. 그래서 실측(1647px 창) 결과
+     브랜드배너 / #gnb / .cat-bar   x=373  (1000 안에서 900 중앙)
+     본문·목록·전체글수              x=343  (1000 안에서 960)
+   왼쪽 시작선이 30px 어긋나 보였다. 글 화면에서도 배너만 혼자 넓었다.
+
+   ── 어떻게 ─────────────────────────────────────────────────
+   전부 795 로 맞춘다. 795 는 이미 정해진 종이 폭이다(707 글줄 + 좌우 패딩 44).
+   #content 는 폭만 잡혀 있고 가운데 정렬이 없어서 margin auto 를 같이 준다.
+   ⚠️ #gnb 는 ul margin-left:-30 + li padding:0 26 + a padding:… 4 로
+      «첫 글자»가 정확히 #gnb 의 왼쪽 끝에 오게 되어 있다. 그래서 #gnb 자체만
+      옮기면 글자도 따라온다 — 안쪽 패딩을 건드릴 필요가 없다.
+   ═══════════════════════════════════════════════════════════ */
+@media screen and (min-width: 768px) {
+  .brand-banner,
+  #gnb,
+  .cat-bar { max-width: 795px !important; }
+
+  #content {
+    max-width: 795px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   머리말 상하 리듬.  --unify-rhythm   (2026-08-28)
+   되돌리기: 이 블록만 지운다. (가로 정렬은 --unify-align 이 따로 맡는다)
+
+   ── 왜 ─────────────────────────────────────────────────────
+   가로선을 맞추고 나니 세로가 어긋난 게 드러났다. 실측(1647px 창):
+     검은 굵은 선 ─ 홈/태그/방명록      바로 붙음
+     #gnb 아래 «현재 위치» 검은 표식     아래 여백 24px 라 메뉴에서 떨어져 나와
+                                        분류 줄 위에 «떠 있는 점»처럼 보였다
+     분류 줄                            위 여백 0
+     「전체 글 N」                       위 4px · 아래 18px — 어느 쪽에도 안 붙음
+   목록을 색인형으로 바꾸면서 행 높이가 71px 로 얇아져 위쪽이 더 답답해졌다.
+
+   ── 어떻게 ─────────────────────────────────────────────────
+   현재 위치 표식이 «글자에 붙게» 메뉴 아래 여백을 24 → 10 으로 줄이고,
+   그 대신 분류 줄에 위 여백 16 을 줘서 두 줄을 떼어 놓는다.
+   「전체 글 N」은 분류 줄과 첫 항목 사이에서 26/12 로 «머리»가 되게 한다.
+   ⚠️ #gnb 는 height:66px 고정이라 안쪽 여백을 줄여도 높이가 안 줄어든다.
+      height:auto 로 풀어 줘야 실제로 위가 조여진다.
+   ═══════════════════════════════════════════════════════════ */
+@media screen and (min-width: 768px) {
+  #gnb { height: auto !important; }
+  #gnb ul li a { padding: 20px 4px 10px !important; }
+
+  .cat-bar { padding-top: 16px !important; padding-bottom: 14px !important; }
+
+  .post-header { padding: 26px 0 12px !important; }
+}
