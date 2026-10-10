@@ -1,0 +1,1 @@
+{"type": "object", "properties": {"status": {"type": "string", "enum": ["ok", "unavailable", "error"]}, "image_path": {"type": "string"}, "tool_used": {"type": "string"}, "message": {"type": "string"}}, "required": ["status", "image_path", "tool_used", "message"], "additionalProperties": false}
