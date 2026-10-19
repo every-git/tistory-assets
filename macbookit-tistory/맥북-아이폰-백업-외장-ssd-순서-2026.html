@@ -1,0 +1,237 @@
+<!-- ===================================================
+   맥북 아이폰 백업 외장 SSD 로 보내는 순서 2026 | 새 아이폰 받기 전에
+   macbookit (맥부킷) 티스토리 블로그용 HTML — Cupertino 테마
+   작성일: 2026-10-20
+   조판 정본: Blog-strategy/system/cupertino-design.md
+=================================================== -->
+
+<h1 style="font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Bold','Noto Sans KR',sans-serif;font-weight:400;font-size:34px;line-height:1.32;letter-spacing:-.03em;color:#141414;margin:0 0 10px" data-ke-size="size26">맥북 아이폰 백업 외장 SSD 로 보내는 순서, 새 아이폰 받기 전에</h1>
+<!--
+  [구글 SEO 메타]
+  제목: 맥북 아이폰 백업 외장 SSD로 보내는 순서 2026 | 새 아이폰 받기 전에
+  메타 설명: 맥북 용량 때문에 아이폰 백업을 못 뜨고 있다면, 백업 폴더를 외장 SSD로 옮기고 심볼릭 링크로 연결하는 다섯 단계를 정리했습니다. APFS 포맷, 터미널 명령, 암호화 백업, 새 아이폰으로 옮기는 세 가지 길까지 애플 지원 문서 기준입니다.
+  태그: 맥북 아이폰 백업 외장 SSD, 아이폰 백업 외장하드 맥, 아이폰 백업 위치 변경 맥, MobileSync Backup 옮기기, 맥 아이폰 백업 심볼릭 링크, 아이폰 암호화 백업 맥, 외장 SSD APFS 포맷, 새 아이폰 데이터 옮기기 맥, 아이폰 듀오 백업, 맥부킷
+-->
+
+
+<div style="background:#F5F5F7;border-radius:18px;padding:28px 26px;margin:2.6rem 0;">
+  <p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;font-size:11px;letter-spacing:0.06em;color:#6E6E73;margin:0 0 14px;" data-ke-size="size18">한눈에 보기</p>
+  <p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;font-size:18px;letter-spacing:-0.01em;line-height:1.6;color:#1D1D1F;margin:0 0 16px;" data-ke-size="size18">맥의 아이폰 백업은 늘 한 폴더에만 쌓입니다. 그 폴더를 외장 SSD 로 옮기고 링크 하나만 걸면 됩니다.</p>
+  <p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.7;color:#1D1D1F;margin:0 0 12px;" data-ke-size="size18"><b style="font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;">순서는 다섯 단계입니다.</b><br />SSD 를 APFS 로 포맷하고 백업 폴더를 만듭니다. 기존 Backup 폴더를 옮기고, 터미널에서 ln -s 로 잇고, Finder 로 암호화 백업을 뜹니다.</p>
+  <p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.7;color:#1D1D1F;margin:0 0 12px;" data-ke-size="size18"><b style="font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;">Finder 에는 백업 위치를 바꾸는 메뉴가 없습니다.</b><br />애플 지원 문서도 폴더 경로만 알려 줍니다. 그래서 링크로 우회합니다. 백업할 때마다 SSD 를 꽂아야 하는 것이 대가입니다.</p>
+  <p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.7;color:#1D1D1F;margin:0;" data-ke-size="size18"><b style="font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;">새 아이폰은 빠른 시작으로 옮기고, 맥 백업은 보험으로 둡니다.</b><br />옛 아이폰이 멀쩡하면 빠른 시작이 제일 빠릅니다. 맥 백업은 옛 아이폰이 고장 나거나 전송이 중간에 끊겼을 때를 위한 한 벌입니다.</p>
+  <p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:15px;line-height:1.7;color:#6E6E73;margin:16px 0 0;" data-ke-size="size18">맥북 프로 M4 Pro · macOS 27.0.1 · 삼성 X5 1TB(썬더볼트, APFS) 에서 2026년 10월 19일에 직접 해 보고 썼습니다. 절차의 근거는 애플 지원 문서 세 편입니다.</p>
+</div>
+
+<p style="text-align:left;margin:2rem 0;line-height:2.3;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;" data-ke-size="size18">
+<a href="#path-anchor" style="color:#0066CC;text-decoration:none;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;">다섯 단계 경로표 먼저 보기 &rsaquo;</a><br />
+<a href="#link-anchor" style="color:#0066CC;text-decoration:none;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;">터미널 명령 세 줄 복사하기 &rsaquo;</a><br />
+<a href="#transfer-anchor" style="color:#0066CC;text-decoration:none;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;">새 아이폰으로 옮기는 세 가지 길 비교하기 &rsaquo;</a>
+</p>
+
+<figure style="margin:3rem 0;text-align:center;">
+  <img src="https://cdn.jsdelivr.net/gh/every-git/tistory-assets@__SHA__/macbookit-tistory/images/2026-10-20-iphone-backup-external-ssd/backup-ssd-steps-infographic.png" alt="아이폰 백업을 외장 SSD로 보내는 다섯 단계 — SSD를 APFS로 포맷, SSD에 Backup 폴더 만들기, 기존 Backup 폴더 옮기기, 터미널에서 ln -s 연결, Finder로 암호화 백업" title="아이폰 백업 외장 SSD 다섯 단계"
+       onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
+       style="width:100%;max-width:720px;height:auto;border-radius:18px;display:inline-block;" />
+  <div style="display:none;padding:20px;background:#F5F5F7;border-radius:18px;color:#6E6E73;">이미지를 불러올 수 없습니다: 아이폰 백업 외장 SSD 다섯 단계</div>
+  <figcaption style="margin-top:12px;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:13px;line-height:1.6;color:#6E6E73;text-align:center;">맥북 아이폰 백업을 외장 SSD 로 보내는 순서. 4단계의 링크가 핵심이고, 나머지는 준비와 마무리입니다.</figcaption>
+</figure>
+
+<p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.8;color:#1D1D1F;margin:0 0 1.6rem;" data-ke-size="size18">새 아이폰 받기 전에 백업을 뜨려다 「디스크에 공간이 부족합니다」를 보신 적 있으신가요? 256GB 맥북에 200GB 아이폰을 백업하면 그 자리가 안 나옵니다. 저도 예전엔 사진을 지워 가며 자리를 만들었습니다. 이번엔 아이폰 듀오를 받기 전에 아예 백업 폴더를 외장 SSD 로 보냈습니다.</p>
+
+<p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.8;color:#1D1D1F;margin:0 0 1.6rem;" data-ke-size="size18">이 글은 맥북 프로 M4 Pro, macOS 27.0.1 에서 썼습니다. 외장 SSD 는 삼성 X5 1TB 를 썬더볼트로 꽂았습니다. 폴더 경로와 백업 절차는 애플 지원 문서를 그대로 따랐습니다. 링크를 거는 부분은 애플이 안내하지 않는 우회법이라 제 맥에서 직접 확인했습니다.</p>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2213720612531615" crossorigin="anonymous"></script>
+<ins class="adsbygoogle" style="display:block;margin:2.6rem 0;" data-ad-client="ca-pub-2213720612531615" data-ad-slot="1793363081" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+<h2 id="path-anchor" style="text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;font-size:26px;letter-spacing:-0.022em;line-height:1.3;color:#1D1D1F;margin:4.2rem 0 1.6rem;" data-ke-size="size26">다섯 단계 경로 한눈에 보기</h2>
+
+<table style="width:100%;border-collapse:collapse;margin:2.4rem 0;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:15px;line-height:1.7;color:#1D1D1F;" data-ke-size="size18">
+<thead>
+<tr><th style="background:#F5F5F7;border-top:1px solid #D2D2D7;border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;font-size:13px;color:#6E6E73;">#</th><th style="background:#F5F5F7;border-top:1px solid #D2D2D7;border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;font-size:13px;color:#6E6E73;">할 일</th><th style="background:#F5F5F7;border-top:1px solid #D2D2D7;border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;font-size:13px;color:#6E6E73;">어디서</th></tr>
+</thead>
+<tbody>
+<tr><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">1</td><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">외장 SSD 를 APFS 로 포맷</td><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;"><b style="font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;">디스크 유틸리티</b> → SSD 선택 → <b style="font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;">지우기</b> → 포맷 APFS</td></tr>
+<tr><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">2</td><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">SSD 에 백업용 폴더 만들기</td><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">Finder 에서 SSD 열고 새 폴더 (예: iPhoneBackup)</td></tr>
+<tr><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">3</td><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">기존 Backup 폴더를 SSD 로 옮기기</td><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">Finder <b style="font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;">이동</b> → <b style="font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;">폴더로 이동</b> → ~/Library/Application Support/MobileSync/</td></tr>
+<tr><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">4</td><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">원래 자리에 링크 걸기</td><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;"><b style="font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;">터미널</b> → ln -s 한 줄 (아래 복사)</td></tr>
+<tr><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">5</td><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">암호화 백업 뜨기</td><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">아이폰 연결 → <b style="font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;">Finder</b> 사이드바 아이폰 → 로컬 백업 암호화 → 지금 백업</td></tr>
+</tbody>
+</table>
+
+<h2 id="why-anchor" style="text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;font-size:26px;letter-spacing:-0.022em;line-height:1.3;color:#1D1D1F;margin:4.2rem 0 1.6rem;" data-ke-size="size26">아이폰 백업이 맥을 채우는 이유 — 폴더가 하나뿐이라서</h2>
+
+<p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.8;color:#1D1D1F;margin:0 0 1.6rem;" data-ke-size="size18">맥에서 뜬 아이폰 백업은 전부 한 폴더에 들어갑니다. 애플 지원 문서가 적어 둔 경로는 <b style="font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;">~/Library/Application Support/MobileSync/Backup/</b> 입니다. Finder 메뉴 막대의 「이동 → 폴더로 이동」에 이 경로를 붙여 넣으면 열립니다.</p>
+
+<p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.8;color:#1D1D1F;margin:0 0 1.6rem;" data-ke-size="size18">문제는 이 폴더를 다른 곳으로 지정하는 메뉴가 없다는 점입니다. 같은 문서를 끝까지 읽어도 「백업 관리」에서 삭제하거나 보관하는 법만 나옵니다. 백업 한 벌이 아이폰 사용 용량과 비슷하게 커지니, 256GB 맥북에서는 사진 몇 장 지우는 것으로 해결이 안 됩니다.</p>
+
+<figure style="margin:3rem 0;text-align:center;">
+  <img src="https://cdn.jsdelivr.net/gh/every-git/tistory-assets@__SHA__/macbookit-tistory/images/2026-10-20-iphone-backup-external-ssd/apple-locate-backups.png" alt="애플 지원 문서 iPhone, iPad 및 iPod touch의 백업 찾기 및 관리하기 — Mac에 저장된 백업 찾기 항목에 Finder 이동 메뉴의 폴더로 이동과 ~/Library/Application Support/MobileSync/Backup/ 경로가 적혀 있다" title="애플 지원 — 백업 찾기 및 관리하기"
+       onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
+       style="width:100%;max-width:720px;height:auto;border-radius:18px;border:1px solid #D2D2D7;display:inline-block;" />
+  <div style="display:none;padding:20px;background:#F5F5F7;border-radius:18px;color:#6E6E73;">이미지를 불러올 수 없습니다: 애플 지원 백업 찾기 문서</div>
+  <figcaption style="margin-top:12px;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:13px;line-height:1.6;color:#6E6E73;text-align:center;">애플 지원 「백업 찾기 및 관리하기」 — 경로는 알려 주지만 바꾸는 법은 없습니다. 2026년 10월 19일 캡처.</figcaption>
+</figure>
+
+<p style="text-align:left;margin:2rem 0;" data-ke-size="size18">
+  <a href="https://support.apple.com/ko-kr/108809" target="_blank" rel="noopener" style="color:#0066CC;text-decoration:none;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;">Apple 지원: iPhone, iPad 및 iPod touch의 백업 찾기 및 관리하기 &rsaquo;</a>
+  <span style="font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:13px;color:#6E6E73;"><br />support.apple.com (대한민국)</span>
+</p>
+
+<p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.8;color:#1D1D1F;margin:0 0 1.6rem;" data-ke-size="size18">그래서 쓰는 방법이 심볼릭 링크입니다. 맥에는 「Backup」이라는 이름표만 남기고, 실제 폴더는 SSD 에 두는 겁니다. Finder 는 이름표를 따라가므로 평소처럼 백업을 뜨면 됩니다. 애플이 공식으로 안내하는 방법은 아니라서, 백업을 뜨거나 복원할 때는 SSD 가 꽂혀 있어야 합니다.</p>
+
+<h2 id="ssd-anchor" style="text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;font-size:26px;letter-spacing:-0.022em;line-height:1.3;color:#1D1D1F;margin:4.2rem 0 1.6rem;" data-ke-size="size26">1단계 — SSD 는 APFS, 용량은 아이폰의 두 배</h2>
+
+<p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.8;color:#1D1D1F;margin:0 0 1.6rem;" data-ke-size="size18">새로 산 SSD 라면 디스크 유틸리티에서 APFS 로 지웁니다. 「디스크 유틸리티 → 왼쪽에서 SSD → 지우기 → 포맷: APFS」 순서입니다. 윈도우와 같이 쓸 생각이면 exFAT 이지만, 백업 전용이라면 APFS 가 맞습니다. 맥의 권한과 링크를 그대로 이해하는 포맷이기 때문입니다.</p>
+
+<p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.8;color:#1D1D1F;margin:0 0 1.6rem;" data-ke-size="size18">제 X5 는 이미 APFS 라 지우지 않았습니다. 디스크 유틸리티의 정보 창에 「파일 시스템: APFS」, 「프로토콜: PCI-Express」로 떠 있습니다. 용량은 아이폰 두 배 정도를 잡으면 백업을 두 벌 보관할 수 있습니다. 256GB 아이폰이면 500GB 급이면 충분합니다.</p>
+
+<p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.8;color:#1D1D1F;margin:0 0 1.6rem;" data-ke-size="size18">속도는 백업 시간에 그대로 나타납니다. 맥에서 외장 SSD 속도가 광고의 절반으로 나오는 이유와 포맷 선택은 아래 글에 따로 적어 뒀습니다. 백업용으로 새로 고르는 분은 먼저 읽어 보세요.</p>
+
+<div style="margin:2.6rem 0;">
+  <a href="https://doonablog.tistory.com/347" style="display:block;max-width:560px;margin:0 auto;background:#F5F5F7;border-radius:18px;overflow:hidden;text-decoration:none;">
+    <div style="padding:18px 20px;">
+      <p style="margin:0 0 6px;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;font-size:16px;letter-spacing:-0.01em;color:#1D1D1F;">맥북 외장 SSD 추천 2026 — 맥에서 속도 반토막 나는 함정과 포맷까지</p>
+      <p style="margin:0 0 8px;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:14px;line-height:1.6;color:#6E6E73;">맥엔 USB 3.2 Gen2x2 가 없어 2,000MB/s 모델도 1,000 으로 떨어집니다. USB4·썬더볼트와 APFS 가 답인 이유.</p>
+      <p style="margin:0;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:12px;color:#0066CC;">이어서 읽기 &rsaquo;</p>
+    </div>
+  </a>
+</div>
+
+<h2 id="link-anchor" style="text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;font-size:26px;letter-spacing:-0.022em;line-height:1.3;color:#1D1D1F;margin:4.2rem 0 1.6rem;" data-ke-size="size26">2~4단계 — 폴더를 옮기고 링크를 거는 터미널 세 줄</h2>
+
+<p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.8;color:#1D1D1F;margin:0 0 1.6rem;" data-ke-size="size18">먼저 Finder 로 SSD 에 「iPhoneBackup」 폴더를 하나 만듭니다. 그다음 터미널을 열고 아래 세 줄을 차례로 붙여 넣습니다. SSD 이름이 다르면 「Samsung X5」 자리만 본인 SSD 이름으로 바꿉니다. 이름에 공백이 있으면 따옴표를 빼지 마세요. 공백에서 명령이 둘로 갈라집니다.</p>
+
+<pre style="margin:2.2rem 0;position:relative;overflow-x:auto;background:#F5F5F7;border-radius:12px;" data-lang="bash">
+  <code style="display:block;padding:16px 18px;font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:14px;line-height:1.7;color:#1D1D1F;white-space:pre;"># 1) 기존 백업 폴더를 SSD 로 옮긴다
+mv ~/Library/Application\ Support/MobileSync/Backup "/Volumes/Samsung X5/iPhoneBackup/Backup"
+
+# 2) 원래 자리에 링크(이름표)를 건다 — 앞이 실제 위치, 뒤가 이름표 자리
+ln -s "/Volumes/Samsung X5/iPhoneBackup/Backup" ~/Library/Application\ Support/MobileSync/Backup
+
+# 3) 확인 — Backup 뒤에 화살표가 보이면 성공
+ls -la ~/Library/Application\ Support/MobileSync/</code>
+</pre>
+
+<figure style="margin:3rem 0;text-align:center;">
+  <img src="https://cdn.jsdelivr.net/gh/every-git/tistory-assets@__SHA__/macbookit-tistory/images/2026-10-20-iphone-backup-external-ssd/terminal-symlink-backup.png" alt="터미널에서 아이폰 백업 폴더를 외장 SSD로 옮기고 ln -s로 링크를 건 뒤 ls -la로 확인한 결과 — Backup 뒤에 화살표와 /Volumes/Samsung X5/iPhoneBackup/Backup 경로가 보인다" title="터미널 ln -s 결과"
+       onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
+       style="width:100%;max-width:720px;height:auto;border-radius:18px;display:inline-block;" />
+  <div style="display:none;padding:20px;background:#F5F5F7;border-radius:18px;color:#6E6E73;">이미지를 불러올 수 없습니다: 터미널 링크 결과</div>
+  <figcaption style="margin-top:12px;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:13px;line-height:1.6;color:#6E6E73;text-align:center;">제 맥에서 돌린 결과입니다. 마지막 줄의 「Backup -&gt; /Volumes/Samsung X5/…」 화살표가 링크가 걸렸다는 표시입니다.</figcaption>
+</figure>
+
+<p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.8;color:#1D1D1F;margin:0 0 1.6rem;" data-ke-size="size18">제 맥은 Backup 폴더가 비어 있었습니다. 그동안 아이폰 백업을 iCloud 로만 해 왔기 때문입니다. 그래서 옮기는 데 1분도 안 걸렸습니다. 백업이 수십 GB 쌓여 있는 분은 1번 줄에서 복사가 한참 돕니다. 그동안 Finder 로 백업을 누르지 말고 끝까지 기다리세요.</p>
+
+<p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.8;color:#1D1D1F;margin:0 0 1.6rem;" data-ke-size="size18">1번 줄에서 「Operation not permitted」가 뜨면 권한 문제입니다. 시스템 설정의 「개인정보 보호 및 보안 → 전체 디스크 접근 권한」에서 터미널을 켜고 다시 하면 됩니다. 3번 줄에 화살표가 안 보이고 그냥 「Backup」만 있으면 링크가 아니라 새 폴더가 생긴 겁니다. 그 폴더를 지우고 2번 줄을 다시 붙여 넣습니다.</p>
+
+<p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.8;color:#1D1D1F;margin:0 0 1.6rem;" data-ke-size="size18">되돌리고 싶으면 반대로 합니다. rm 으로 이름표만 지웁니다. 안의 백업은 SSD 에 그대로 있습니다. 그다음 SSD 의 Backup 폴더를 원래 자리로 옮기면 끝입니다. 원래 백업은 링크가 잘 걸린 것을 확인할 때까지 지우지 마세요.</p>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2213720612531615" crossorigin="anonymous"></script>
+<ins class="adsbygoogle" style="display:block;margin:2.6rem 0;" data-ad-client="ca-pub-2213720612531615" data-ad-slot="1606182284" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+<h2 id="backup-anchor" style="text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;font-size:26px;letter-spacing:-0.022em;line-height:1.3;color:#1D1D1F;margin:4.2rem 0 1.6rem;" data-ke-size="size26">5단계 — Finder 암호화 백업, 체크 하나가 건강 데이터를 가른다</h2>
+
+<p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.8;color:#1D1D1F;margin:0 0 1.6rem;" data-ke-size="size18">SSD 를 꽂은 채 아이폰을 케이블로 연결합니다. Finder 사이드바에서 아이폰을 고르고, 처음이면 「신뢰」를 양쪽에서 누릅니다. 일반 탭의 백업 칸에서 <b style="font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;">「로컬 백업 암호화」</b>를 체크하고 암호를 만든 뒤 「지금 백업」을 누릅니다. 애플 지원 문서의 12단계 중 핵심은 이 체크 하나입니다.</p>
+
+<figure style="margin:3rem 0;text-align:center;">
+  <img src="https://cdn.jsdelivr.net/gh/every-git/tistory-assets@__SHA__/macbookit-tistory/images/2026-10-20-iphone-backup-external-ssd/apple-backup-iphone-with-mac.png" alt="애플 지원 문서 Mac을 사용하여 iPhone 또는 iPad를 백업하는 방법 — Finder로 백업하기 1~8단계, 8번에 건강 및 활동 데이터를 저장하려면 로컬 백업 암호화를 선택하라는 문장" title="애플 지원 — Mac으로 iPhone 백업"
+       onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
+       style="width:100%;max-width:720px;height:auto;border-radius:18px;border:1px solid #D2D2D7;display:inline-block;" />
+  <div style="display:none;padding:20px;background:#F5F5F7;border-radius:18px;color:#6E6E73;">이미지를 불러올 수 없습니다: 애플 지원 Mac 백업 문서</div>
+  <figcaption style="margin-top:12px;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:13px;line-height:1.6;color:#6E6E73;text-align:center;">애플 지원 「Mac을 사용하여 iPhone 또는 iPad를 백업하는 방법」 — 8번이 암호화 체크입니다. 2026년 10월 19일 캡처.</figcaption>
+</figure>
+
+<p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.8;color:#1D1D1F;margin:0 0 1.6rem;" data-ke-size="size18">암호화를 켜야 들어가는 것이 있습니다. 애플 문서 기준으로 저장된 암호, Wi-Fi 설정, 웹사이트 방문 기록, 건강 데이터, 통화 기록입니다. 암호화 없이 뜬 백업으로 새 아이폰을 복원하면 건강 앱의 걸음 수와 심박 기록이 비어 있습니다. 대신 이 암호를 잊으면 백업을 아예 못 씁니다. 암호 관리자에 적어 두세요.</p>
+
+<p style="text-align:left;margin:2rem 0;" data-ke-size="size18">
+  <a href="https://support.apple.com/ko-kr/108796" target="_blank" rel="noopener" style="color:#0066CC;text-decoration:none;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;">Apple 지원: Mac을 사용하여 iPhone 또는 iPad를 백업하는 방법 &rsaquo;</a>
+  <span style="font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:13px;color:#6E6E73;"><br />support.apple.com (대한민국)</span>
+</p>
+
+<p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.8;color:#1D1D1F;margin:0 0 1.6rem;" data-ke-size="size18">백업이 끝나면 Finder 에 마지막 백업 시각이 뜹니다. 그 뒤에 SSD 의 iPhoneBackup 폴더를 열어 보세요. 긴 영문·숫자 이름의 폴더가 하나 생겨 있으면 백업이 SSD 로 들어간 겁니다. 맥 쪽 「Backup」은 이름표라 용량을 거의 안 씁니다.</p>
+
+<h2 id="transfer-anchor" style="text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;font-size:26px;letter-spacing:-0.022em;line-height:1.3;color:#1D1D1F;margin:4.2rem 0 1.6rem;" data-ke-size="size26">새 아이폰으로 옮기는 세 가지 길 — 맥 백업은 보험이다</h2>
+
+<p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.8;color:#1D1D1F;margin:0 0 1.6rem;" data-ke-size="size18">새 아이폰을 받으면 옮기는 길은 셋입니다. 두 기기를 나란히 두는 「빠른 시작」, iCloud 백업에서 복원, 그리고 방금 뜬 맥 백업에서 복원입니다. 옛 아이폰이 멀쩡하고 시간이 있으면 빠른 시작이 제일 간단합니다. 애플 문서대로 두 기기를 전원에 꽂고 가까이 둔 채 기다리면 됩니다.</p>
+
+<figure style="margin:3rem 0;text-align:center;">
+  <img src="https://cdn.jsdelivr.net/gh/every-git/tistory-assets@__SHA__/macbookit-tistory/images/2026-10-20-iphone-backup-external-ssd/transfer-methods-compare.png" alt="새 아이폰으로 옮기는 세 가지 길 비교표 — 빠른 시작은 두 기기 나란히, iCloud 백업은 iCloud 용량, 맥 백업은 맥과 케이블이 필요하고, 옛 아이폰 고장 시 빠른 시작만 불가, 맥 용량 부담은 외장 SSD면 없음" title="새 아이폰으로 옮기는 세 가지 길"
+       onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
+       style="width:100%;max-width:720px;height:auto;border-radius:18px;display:inline-block;" />
+  <div style="display:none;padding:20px;background:#F5F5F7;border-radius:18px;color:#6E6E73;">이미지를 불러올 수 없습니다: 세 가지 전송 방법 비교</div>
+  <figcaption style="margin-top:12px;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:13px;line-height:1.6;color:#6E6E73;text-align:center;">세 길의 차이는 「옛 아이폰이 없을 때」와 「맥 용량」 두 줄에서 갈립니다.</figcaption>
+</figure>
+
+<table style="width:100%;border-collapse:collapse;margin:2.4rem 0;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:15px;line-height:1.7;color:#1D1D1F;" data-ke-size="size18">
+<thead>
+<tr><th style="background:#F5F5F7;border-top:1px solid #D2D2D7;border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;font-size:13px;color:#6E6E73;"></th><th style="background:#F5F5F7;border-top:1px solid #D2D2D7;border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;font-size:13px;color:#6E6E73;">빠른 시작</th><th style="background:#F5F5F7;border-top:1px solid #D2D2D7;border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;font-size:13px;color:#6E6E73;">iCloud 백업</th><th style="background:#F5F5F7;border-top:1px solid #D2D2D7;border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;font-size:13px;color:#6E6E73;">맥 백업 (외장 SSD)</th></tr>
+</thead>
+<tbody>
+<tr><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">필요한 것</td><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">두 기기를 나란히, 전원·Wi-Fi</td><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">iCloud 용량 (부족하면 임시 저장 공간)</td><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">맥 + 케이블 + SSD 연결</td></tr>
+<tr><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">건강·암호 데이터</td><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">옮겨짐</td><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">옮겨짐</td><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">암호화 백업이면 옮겨짐</td></tr>
+<tr><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">옛 아이폰이 고장·분실</td><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">불가</td><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">가능</td><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">가능</td></tr>
+<tr><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">맥 용량 부담</td><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">없음</td><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">없음</td><td style="border-bottom:1px solid #D2D2D7;padding:12px 14px;text-align:left;">외장 SSD 로 보냈으면 없음</td></tr>
+</tbody>
+</table>
+
+<p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.8;color:#1D1D1F;margin:0 0 1.6rem;" data-ke-size="size18">맥 백업에서 복원할 때는 SSD 를 꽂은 채 새 아이폰을 맥에 연결합니다. Finder 사이드바에서 새 아이폰을 고르고 「백업 복원」을 누른 뒤 날짜와 크기로 방금 뜬 백업을 고릅니다. 암호화 백업이면 암호를 묻습니다. 복원이 끝나고 재시동·동기화가 다 될 때까지 케이블을 뽑지 않습니다.</p>
+
+<figure style="margin:3rem 0;text-align:center;">
+  <img src="https://cdn.jsdelivr.net/gh/every-git/tistory-assets@__SHA__/macbookit-tistory/images/2026-10-20-iphone-backup-external-ssd/apple-quick-start.png" alt="애플 지원 문서 빠른 시작을 사용하여 데이터를 새 iPhone 또는 iPad로 전송하기 — 두 기기를 가까이 두고 전원에 연결한 채 기다리라는 안내" title="애플 지원 — 빠른 시작"
+       onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
+       style="width:100%;max-width:720px;height:auto;border-radius:18px;border:1px solid #D2D2D7;display:inline-block;" />
+  <div style="display:none;padding:20px;background:#F5F5F7;border-radius:18px;color:#6E6E73;">이미지를 불러올 수 없습니다: 애플 지원 빠른 시작 문서</div>
+  <figcaption style="margin-top:12px;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:13px;line-height:1.6;color:#6E6E73;text-align:center;">애플 지원 「빠른 시작」 — 옛 아이폰이 있으면 이 길이 먼저입니다. 2026년 10월 19일 캡처.</figcaption>
+</figure>
+
+<p style="text-align:left;margin:2rem 0;" data-ke-size="size18">
+  <a href="https://support.apple.com/ko-kr/102659" target="_blank" rel="noopener" style="color:#0066CC;text-decoration:none;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;">Apple 지원: 빠른 시작을 사용하여 데이터를 새 iPhone 또는 iPad로 전송하기 &rsaquo;</a>
+  <span style="font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:13px;color:#6E6E73;"><br />support.apple.com (대한민국)</span>
+</p>
+
+<p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.8;color:#1D1D1F;margin:0 0 1.6rem;" data-ke-size="size18">아이폰 듀오가 10월 23일에 옵니다. 받기 전 맥에서 할 일 전체(iCloud 백업 확인·eSIM·미러링)는 아래 글에 순서대로 적어 뒀습니다. 이 글은 그중 「백업」 한 칸을 외장 SSD 로 푼 것입니다.</p>
+
+<div style="margin:2.6rem 0;">
+  <a href="https://doonablog.tistory.com/394" style="display:block;max-width:560px;margin:0 auto;background:#F5F5F7;border-radius:18px;overflow:hidden;text-decoration:none;">
+    <img src="https://cdn.jsdelivr.net/gh/every-git/tistory-assets@__SHA__/macbookit-tistory/images/cards/아이폰-18-프로-받기-전-맥에서-할-일-백업-esim-2026.jpg" alt="아이폰 18 프로 받기 전에 맥에서 해 둘 것 — 백업·eSIM·미러링 순서" style="width:100%;height:180px;object-fit:cover;display:block;" />
+    <div style="padding:18px 20px;">
+      <p style="margin:0 0 6px;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;font-size:16px;letter-spacing:-0.01em;color:#1D1D1F;">아이폰 18 프로 받기 전에 맥에서 해 둘 것 — 백업·eSIM·미러링 순서</p>
+      <p style="margin:0 0 8px;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:14px;line-height:1.6;color:#6E6E73;">새 아이폰 받는 날의 문제는 그 전에 정해집니다. 백업·eSIM 이전·미러링 기기 이름까지 네 가지.</p>
+      <p style="margin:0;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:12px;color:#0066CC;">이어서 읽기 &rsaquo;</p>
+    </div>
+  </a>
+</div>
+
+<h2 id="faq-anchor" style="text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;font-size:26px;letter-spacing:-0.022em;line-height:1.3;color:#1D1D1F;margin:4.2rem 0 1.6rem;" data-ke-size="size26">자주 묻는 것</h2>
+
+<p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.8;color:#1D1D1F;margin:0 0 1.6rem;" data-ke-size="size18"><b style="font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;">Q. SSD 를 안 꽂고 백업을 누르면 어떻게 되나요?</b><br />A. 이름표가 가리키는 곳이 없으니 백업이 실패합니다. 맥 안에 다시 쌓이지는 않습니다. SSD 를 꽂고 다시 누르면 됩니다.</p>
+
+<p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.8;color:#1D1D1F;margin:0 0 1.6rem;" data-ke-size="size18"><b style="font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;">Q. exFAT 외장하드로도 되나요?</b><br />A. 백업 전용이라면 APFS 를 권합니다. 맥의 권한 정보를 그대로 담는 포맷이라 복원 때 탈이 적습니다. 윈도우와 같이 써야 하는 하드라면 백업용 파티션만 따로 APFS 로 나누는 편이 낫습니다.</p>
+
+<p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.8;color:#1D1D1F;margin:0 0 1.6rem;" data-ke-size="size18"><b style="font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;">Q. iCloud 백업이 있으면 맥 백업은 안 떠도 되나요?</b><br />A. 옮기는 날만 보면 됩니다. 다만 iCloud 는 용량이 모자라면 백업이 멈춰 있을 때가 많습니다. 설정에서 마지막 백업 시각을 먼저 확인하고, 한 달 넘게 멈춰 있었다면 맥 백업을 한 벌 떠 두는 쪽이 안전합니다.</p>
+
+<p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.8;color:#1D1D1F;margin:0 0 1.6rem;" data-ke-size="size18"><b style="font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;">Q. 암호화 백업 암호를 잊었어요.</b><br />A. 그 백업은 복원할 수 없습니다. 애플 문서도 「이 암호가 없으면 백업을 복원할 수 없다」고 적습니다. 아이폰 설정에서 백업 암호를 재설정할 수는 있지만, 그 전에 뜬 백업은 열리지 않으니 새로 떠야 합니다.</p>
+
+<h2 id="wrap-anchor" style="text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;font-size:26px;letter-spacing:-0.022em;line-height:1.3;color:#1D1D1F;margin:4.2rem 0 1.6rem;" data-ke-size="size26">정리하면</h2>
+
+<p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.8;color:#1D1D1F;margin:0 0 1.6rem;" data-ke-size="size18">맥의 아이폰 백업 폴더는 하나뿐이고 바꾸는 메뉴가 없습니다. 그래서 폴더를 외장 SSD 로 옮기고 원래 자리에 링크를 겁니다. 터미널 세 줄이면 끝나고, 되돌리기도 한 줄입니다. 백업은 꼭 「로컬 백업 암호화」를 켜고 뜨세요. 건강·암호 데이터가 거기에 달려 있습니다.</p>
+
+<p style="text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:17px;letter-spacing:-0.003em;line-height:1.8;color:#1D1D1F;margin:0 0 1.6rem;" data-ke-size="size18">새 아이폰은 빠른 시작으로 옮기고, 이 백업은 보험으로 SSD 에 둡니다. 맥북 프로 M4 Pro 와 삼성 X5 에서 확인한 순서이고, 다른 맥에서도 경로는 같습니다. 10월 23일에 듀오를 받는 분은 그 전날 한 번만 해 두면 됩니다.</p>
+
+<p style="text-align:center;margin:2.4rem 0;" data-ke-size="size18">
+  <a href="#link-anchor" style="display:inline-block;background:#0071E3;color:#FFFFFF;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-SemiBold','Noto Sans KR',sans-serif;font-weight:600;font-size:15px;letter-spacing:-0.01em;padding:12px 24px;border-radius:980px;text-decoration:none;">터미널 세 줄 다시 보기</a>
+</p>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2213720612531615" crossorigin="anonymous"></script>
+<ins class="adsbygoogle" style="display:block;margin:2.6rem 0;" data-ad-client="ca-pub-2213720612531615" data-ad-slot="5154259644" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+<div style="margin:4rem 0 1rem;text-align:center;">
+  <img src="https://cdn.jsdelivr.net/gh/every-git/tistory-assets@090f206964842b47d93165fbb16cbe2eaf4a7672/macbookit-tistory/brand/seal-ink-320.png" alt="맥부킷" style="width:44px;height:44px;display:inline-block;" />
+  <p style="margin:10px 0 0;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard-Regular','Noto Sans KR',sans-serif;font-size:13px;letter-spacing:0.02em;color:#6E6E73;" data-ke-size="size18">맥부킷 · doonablog.tistory.com</p>
+</div>
+
+<!-- 태그: 맥북 아이폰 백업 외장 SSD, 아이폰 백업 외장하드 맥, 아이폰 백업 위치 변경 맥, MobileSync Backup 옮기기, 맥 아이폰 백업 심볼릭 링크, 아이폰 암호화 백업 맥, 외장 SSD APFS 포맷, 새 아이폰 데이터 옮기기 맥, 아이폰 듀오 백업, 맥부킷 -->
